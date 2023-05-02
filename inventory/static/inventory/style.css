@@ -6,6 +6,20 @@ h1 {
     color: white;
 }
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    color: white;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color:#00e9cc;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
