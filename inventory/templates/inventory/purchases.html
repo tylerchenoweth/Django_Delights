@@ -6,4 +6,28 @@
 
 {% block content %}
 <h1> Purchases </h1>
+
+<table>
+
+    <tr>
+        <th> Menu Item </th>
+        <th> Amount Paid </th>
+        <th> Time </th>
+    
+    </tr>
+    {% for purchase in purchases_list %}
+    <tr>
+        <td>{{ purchase.menu_item }}</td>
+        <td>{{ purchase.amount_paid }}</td>
+        <td>{{ purchase.timestamp }}</td>
+        <td> <a href="{% url 'purchasesupdate' purchase.id %}">&#128509;</a> </td>
+        <td> <a href="{% url 'purchasesdelete' purchase.id %}">&#128151;</a> </td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="{% url 'purchasescreate' %}">ADD</a> 
+
 {% endblock %}

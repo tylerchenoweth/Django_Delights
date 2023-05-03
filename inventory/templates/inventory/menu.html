@@ -6,4 +6,25 @@
 
 {% block content %}
 <h1> Menu </h1>
+
+<table>
+
+<tr>
+    <th> Title </th>
+    <th> Price </th>
+</tr>
+{% for menuitem in menuitem_list %}
+<tr>
+    <td>{{ menuitem.title }}</td>
+    <td>{{ menuitem.price }}</td>
+    <td> <a href="{% url 'menuitemupdate' menuitem.id %}">&#128509;</a> </td>
+    <td> <a href="{% url 'menuitemdelete' menuitem.id %}">&#128151</a> </td>
+    
+</tr>
+{% endfor %}
+</table>
+
+<br>
+<a href="{% url 'menuitemcreate' %}">ADD</a> 
+
 {% endblock %}

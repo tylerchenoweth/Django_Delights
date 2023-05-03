@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} Django Delights {% endblock %}
+
+{% block content %}
+<h1> Purchases Update</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+
+    <input type="submit" value="Update"/>
+</form>
+{% endblock %}
