@@ -14,6 +14,12 @@ table {
 th, td {
     color: white;
     text-align: left;
+    
+}
+
+th, td, a {
+    text-decoration: none;
+    color: white;
 }
 
 tr:nth-child(even) {
