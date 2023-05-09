@@ -5,7 +5,16 @@
 {% block title %} Django Delights {% endblock %}
 
 {% block content %}
+
 <h1> Purchases </h1>
+
+<li>
+{% for purchase in all_purchases %}
+    <ul>
+        {{ purchase.menu_item }}
+    </ul>
+{% endfor %}
+</li>
 
 <table>
 
@@ -25,6 +34,7 @@
 
     </tr>
     {% endfor %}
+    
 </table>
 
 <br>
