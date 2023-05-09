@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} Django Delights {% endblock %}
+
+{% block content %}
+<h1> Recipe Requirement </h1>
+
+<h1> {{reciperequirement_list.pk}} </h1>
+
+<table>
+
+    <tr>
+        <th> Title </th>
+        <th> Price </th>
+        <th> adfs</th>
+    </tr>
+    {% for r in reciperequirement_list %}
+    <tr>
+        <td>{{ r.menu_item }}</td>
+        <td>{{ r.ingredient }}</td>
+        <td>{{ r.quantity }}</td>
+        <td> {{r.pk}} </td>
+        <td> Not here </td>
+
+        
+    </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}
