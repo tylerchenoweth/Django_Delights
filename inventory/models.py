@@ -59,4 +59,4 @@ class Purchases(models.Model):
 
     def __str__(self):
         return self.menu_item.title
-    
+         
