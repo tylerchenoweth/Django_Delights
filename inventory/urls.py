@@ -5,15 +5,17 @@ from . import views
 urlpatterns = [
     path("", views.home, name="home"),
 
+    #path("<pk>/details", views.details, name="details"),
+
     path("menu", views.MenuItemList.as_view(), name="menu"),
     path("menuitem/create", views.MenuItemCreate.as_view(), name="menuitemcreate"),
     path("menuitem/<pk>/update", views.MenuItemUpdate.as_view(), name="menuitemupdate"),
     path("menuitem/<pk>/delete", views.MenuItemDelete.as_view(), name="menuitemdelete"),
 
-    path("inventory", views.InventoryList.as_view(), name="inventory"),
-    path("inventory/create", views.IngredientCreate.as_view(), name="inventorycreate"),
-    path("inventory/<pk>/update", views.IngredientUpdate.as_view(), name="inventoryupdate"),
-    path("inventory/<pk>/delete", views.IngredientDelete.as_view(), name="inventorydelete"),
+    path("ingredient", views.IngredientList.as_view(), name="ingredient"),
+    path("ingredient/create", views.IngredientCreate.as_view(), name="ingredientcreate"),
+    path("ingredient/<pk>/update", views.IngredientUpdate.as_view(), name="ingredientupdate"),
+    path("ingredient/<pk>/delete", views.IngredientDelete.as_view(), name="ingredientdelete"),
 
     #path("purchases", views.purchases, name="purchases"),
     path("purchases", views.PurchasesList.as_view(), name="purchases"),
@@ -21,4 +23,5 @@ urlpatterns = [
     path("purchases/<pk>/update", views.PurchasesUpdate.as_view(), name="purchasesupdate"),
     path("purchases/<pk>/delete", views.PurchasesDelete.as_view(), name="purchasesdelete"),
     
+    path("reciperequirement/<pk>", views.RecipeRequirementList.as_view(), name="reciperequirement"),
 ]
