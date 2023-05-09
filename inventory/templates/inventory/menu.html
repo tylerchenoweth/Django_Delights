@@ -19,6 +19,7 @@
     <td>{{ menuitem.price }}</td>
     <td> <a href="{% url 'menuitemupdate' menuitem.id %}">&#128509;</a> </td>
     <td> <a href="{% url 'menuitemdelete' menuitem.id %}">&#128151</a> </td>
+    <td> <a href="{% url 'reciperequirement' menuitem.id %}"> click here</a> </td>
     
 </tr>
 {% endfor %}
