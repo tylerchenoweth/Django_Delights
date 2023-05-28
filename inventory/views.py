@@ -79,8 +79,10 @@ class PurchasesList(ListView):
     model = Purchases
     template_name = "inventory/purchases.html"
 
-    queryset = Purchases.objects.all()
-    context_object_name = 'all_purchases'
+    #def get_queryset(self):
+    #    return Purchases.objects.order_by('-timestamp')[:3]
+    
+    
         
 
 class PurchasesCreate(CreateView):
@@ -88,6 +90,22 @@ class PurchasesCreate(CreateView):
     form_class = PurchasesCreateForm
     success_url = reverse_lazy("purchases")
     template_name = "inventory/add_purchases.html"
+
+    #def form_valid(self, form):
+    #    form.instance.amount_paid = form.instance.menu_item.price
+    #    return super().form_valid(form)
+
+    # this will add the amount_paid to the database automatically
+    def form_valid(self, form):
+        menu_item = form.cleaned_data.get('menu_item')
+        amount_paid = form.cleaned_data.get('amount_paid')
+        if menu_item and amount_paid <= 0:
+            form.instance.amount_paid = menu_item.price
+
+        return super().form_valid(form)
+    
+
+    
 
 class PurchasesUpdate(UpdateView):
     model = Purchases
