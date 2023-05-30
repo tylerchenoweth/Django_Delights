@@ -7,26 +7,43 @@
 {% block content %}
 <h1> Recipe Requirement </h1>
 
-<h1> {{reciperequirement_list.pk}} </h1>
+<h1> {{menuitem.pk}} </h1>
+
+<h1> {{menu_item.id}} </h1>
+<h1> {{reciperequirement.id}} </h1>
+<h1> {{reciperequirement.menu_item}} </h1>
+<h1> {{reciperequirement.ingredient}} </h1>
+<h1> {{ingredient.id}} </h1>
+
 
 <table>
-
     <tr>
         <th> Title </th>
         <th> Price </th>
-        <th> adfs</th>
+        <th> Quantity</th>
+        <th> Primary Key </th>
+        <th> Menu Item Foreign Key</th>
     </tr>
-    {% for r in reciperequirement_list %}
-    <tr>
-        <td>{{ r.menu_item }}</td>
-        <td>{{ r.ingredient }}</td>
-        <td>{{ r.quantity }}</td>
-        <td> {{r.pk}} </td>
-        <td> Not here </td>
+    {% for r in object_list %}
+        {% if r.menu_item.pk == request.resolver_match.kwargs.pk %}
+        <tr>
+            <td>{{ r.menu_item }}</td>
+            <td>{{ r.ingredient }}</td>
+            <td>{{ r.quantity }}</td>
+            <td> {{r.pk}} </td>
+            <td> {{r.menu_item.pk}} </td>
+            
 
-        
-    </tr>
+            
+        </tr>
+        {% endif %}
     {% endfor %}
-    </table>
+</table>
+
+<p> PRimary KEy: {{request.resolver_match.kwargs.pk}}</p>
+<p> {{reciperequirement}} </p>
+<p> {{reciperequirement.pk}} </p>
+<p> {{menuitem}} </p>
+<p> {{menuitem.pk}} </p>
 
 {% endblock %}

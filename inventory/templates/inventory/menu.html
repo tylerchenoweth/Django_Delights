@@ -11,15 +11,18 @@
 
 <tr>
     <th> Title </th>
+    <th> Menu Item ID </th>
     <th> Price </th>
+    <th> Edit </th>
+    <th> Delete </th>
 </tr>
 {% for menuitem in menuitem_list %}
 <tr>
-    <td>{{ menuitem.title }}</td>
+    <td> <a href="{% url 'reciperequirement' menuitem.id %}"> {{ menuitem.title }} </a> </td>
+    <td> {{ menuitem.id }}</td>
     <td>{{ menuitem.price }}</td>
     <td> <a href="{% url 'menuitemupdate' menuitem.id %}">&#128509;</a> </td>
     <td> <a href="{% url 'menuitemdelete' menuitem.id %}">&#128151</a> </td>
-    <td> <a href="{% url 'reciperequirement' menuitem.id %}"> click here</a> </td>
     
 </tr>
 {% endfor %}
