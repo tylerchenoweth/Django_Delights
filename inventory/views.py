@@ -5,7 +5,7 @@ from .models import MenuItem, Ingredient, RecipeRequirement, Purchases
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .forms import MenuItemCreateForm, IngredientCreateForm, RecipeRequirementCreateForm, PurchasesCreateForm 
+from .forms import MenuItemCreateForm, IngredientCreateForm, PurchasesCreateForm#, RecipeRequirementCreateForm
 
 from django.urls import reverse_lazy
 
@@ -122,7 +122,7 @@ class PurchasesDelete(DeleteView):
 
 
 
-class RecipeRequirementList(ListView):
+"""class RecipeRequirementList(ListView):
     model = RecipeRequirement
     template_name = "inventory/reciperequirement.html"
 
@@ -133,3 +133,18 @@ class RecipeRequirementList(ListView):
         #print( test )
         #return render(request, 'reciperequirement', {'test':test})
         return RecipeRequirement.objects.filter( menu_item=4 )
+"""
+
+def reciperequirement(request, pk):
+
+    print("\n\n\n", pk, "\n\n\n\n\n\n")
+
+    obj = RecipeRequirement.objects.filter(menu_item=pk)
+    
+    for o in obj:
+        print( o.ingredient.name )
+        print( Ingredient.objects.filter(pk=o.ingredient.pk))
+
+    context = { "ingredients": RecipeRequirement.objects.filter(menu_item=pk) }
+
+    return render(request, "inventory/reciperequirement.html", context)
