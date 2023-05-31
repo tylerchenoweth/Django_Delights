@@ -15,26 +15,30 @@
         <th> Ingredient </th>
         <th> Quantity</th>
         <th> Unit Type </th>
+        <th> Unit Price </th>
         <th> ID </th>
         <th> Menu Item Foreign Key</th>
         <th> Ingredient Foreign Key</th>
     </tr>
+ 
     {% for i in ingredients %}
         <tr>
             <td>{{ i.ingredient }}</td>
             <td>{{ i.quantity }}</td>
             <td> {{i.ingredient.unit }}</td>
+            <td> {{i.ingredient.unit_price }}</td>
             <td> {{i.pk}} </td>
             <td> {{i.menu_item.pk}} </td>
             <td> {{i.ingredient.pk}} </td>
-            
-            
 
-            
         </tr>
 
     {% endfor %}
 </table>
+
+<p>Menu Item Cost: ${{menu_item_money.menu_item_cost}} </p>
+<p>Menu Item Price: ${{menu_item_money.menu_item_price}} </p>
+<p>Menu Item Profit: ${{menu_item_money.menu_item_profit}} </p>
 
 <p> PRimary KEy: {{request.resolver_match.kwargs.pk}}</p>
 

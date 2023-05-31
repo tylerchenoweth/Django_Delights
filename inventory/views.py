@@ -139,12 +139,28 @@ def reciperequirement(request, pk):
 
     print("\n\n\n", pk, "\n\n\n\n\n\n")
 
-    obj = RecipeRequirement.objects.filter(menu_item=pk)
-    
-    for o in obj:
-        print( o.ingredient.name )
-        print( Ingredient.objects.filter(pk=o.ingredient.pk))
+    menu_item_cost = 0
+    menu_item_price = 0
+    menu_item_profit = 0
 
-    context = { "ingredients": RecipeRequirement.objects.filter(menu_item=pk) }
+    obj = RecipeRequirement.objects.filter(menu_item=pk)
+    for o in obj:
+        menu_item_cost += ( o.ingredient.unit_price * o.quantity )
+
+    p = MenuItem.objects.filter(pk=pk)
+    for i in p:
+        menu_item_price = i.price
+        break
+
+    menu_item_profit = round( menu_item_price - menu_item_cost, 2 )
+
+    context = { 
+        "ingredients": RecipeRequirement.objects.filter(menu_item=pk),
+        "menu_item_money": { 
+            "menu_item_cost" : menu_item_cost, 
+            "menu_item_price" : menu_item_price,
+            "menu_item_profit" : menu_item_profit,
+            }
+        }
 
     return render(request, "inventory/reciperequirement.html", context)
