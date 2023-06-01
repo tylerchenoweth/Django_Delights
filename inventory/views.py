@@ -83,7 +83,7 @@ class PurchasesList(ListView):
     #    return Purchases.objects.order_by('-timestamp')[:3]
     
     
-        
+    
 
 class PurchasesCreate(CreateView):
     model = Purchases
@@ -91,14 +91,45 @@ class PurchasesCreate(CreateView):
     success_url = reverse_lazy("purchases")
     template_name = "inventory/add_purchases.html"
 
-    #def form_valid(self, form):
-    #    form.instance.amount_paid = form.instance.menu_item.price
-    #    return super().form_valid(form)
-
     # this will add the amount_paid to the database automatically
     def form_valid(self, form):
+        
+
         menu_item = form.cleaned_data.get('menu_item')
         amount_paid = form.cleaned_data.get('amount_paid')
+        menu_item_ID = menu_item.pk
+
+        
+        print("QUERY:")
+        available_ingredient_qty = 0
+        required_ingredient_qty = 0
+        tuple_numbers = []
+
+        # update the quantity of each ingredient
+        for i in RecipeRequirement.objects.filter(menu_item=menu_item.pk):
+            #print( i.ingredient.pk, "-> ", i.ingredient, "-> ", i.quantity )
+            required_ingredient_qty = i.quantity
+            for k in Ingredient.objects.filter(id=i.ingredient.pk):
+                available_ingredient_qty = k.quantity
+           
+            print("Required QTY: ", required_ingredient_qty )
+            print("Available QTY: ", available_ingredient_qty )
+
+            tuple_numbers.append( [i.ingredient.pk, available_ingredient_qty, required_ingredient_qty] )
+
+        allIngredientsAvailable = True
+
+        for t in tuple_numbers:
+            if( (t[1] - t[2]) < 0 or t[1] == 0 ):
+                allIngredientsAvailable = False
+
+        if( allIngredientsAvailable == True ):
+             for t in tuple_numbers:
+                Ingredient.objects.filter(id=t[0]).update(quantity=(t[1]-t[2]))
+                print("DEDUCTING INGREDIENTS")
+
+        print("\n\n\n")
+
         if menu_item and amount_paid <= 0:
             form.instance.amount_paid = menu_item.price
 
@@ -137,19 +168,14 @@ class PurchasesDelete(DeleteView):
 
 def reciperequirement(request, pk):
 
-    print("\n\n\n", pk, "\n\n\n\n\n\n")
-
     menu_item_cost = 0
     menu_item_price = 0
-    menu_item_profit = 0
 
-    obj = RecipeRequirement.objects.filter(menu_item=pk)
-    for o in obj:
-        menu_item_cost += ( o.ingredient.unit_price * o.quantity )
+    for r in RecipeRequirement.objects.filter(menu_item=pk):
+        menu_item_cost += ( r.ingredient.unit_price * r.quantity )
 
-    p = MenuItem.objects.filter(pk=pk)
-    for i in p:
-        menu_item_price = i.price
+    for m in MenuItem.objects.filter(pk=pk):
+        menu_item_price = m.price
         break
 
     menu_item_profit = round( menu_item_price - menu_item_cost, 2 )
