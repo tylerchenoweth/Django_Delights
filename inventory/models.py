@@ -4,7 +4,7 @@ import datetime
 
 # Create your models here.
 class MenuItem(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=50, unique=True)
     price = models.FloatField(default=0.0)
 
     def __str__(self):
@@ -36,7 +36,7 @@ class Ingredient(models.Model):
         (POUND, "LBS"),
     ]
 
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, unique=True)
     quantity = models.FloatField(default=0)
     unit = models.CharField(max_length=3, choices=UNIT_TYPES)
     unit_price = models.FloatField(default=0.0)
