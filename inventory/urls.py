@@ -22,6 +22,7 @@ urlpatterns = [
     path("purchases/create", views.PurchasesCreate.as_view(), name="purchasescreate"),
     path("purchases/<pk>/update", views.PurchasesUpdate.as_view(), name="purchasesupdate"),
     path("purchases/<pk>/delete", views.PurchasesDelete.as_view(), name="purchasesdelete"),
+    path("purchases/create/error", views.PurchasesCreateError, name="purchasescreateerror"),
     
     #path("reciperequirement/<int:pk>", views.RecipeRequirementList.as_view(), name="reciperequirement"),
     path("reciperequirement/<int:pk>", views.reciperequirement, name="reciperequirement")

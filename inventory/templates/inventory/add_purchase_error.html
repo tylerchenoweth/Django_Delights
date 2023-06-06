@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} Django Delights {% endblock %}
+
+{% block content %}
+<h1> Purchases Create Error</h1>
+<p> There are not enough ingredients to make that dish!</p>
+<p> Click <a href="{% url 'purchasescreate' %}">here</a> to add a new purchase</p>
+
+{% endblock %}
