@@ -83,23 +83,39 @@ class PurchasesList(ListView):
     #    return Purchases.objects.order_by('-timestamp')[:3]
     
     
-    
+from django.http import HttpResponseRedirect 
 
-class PurchasesCreate(CreateView):
+from django.contrib import messages
+
+class SuccessMessageMixin:
+    success_message = ''
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        success_message = self.get_success_message(form.cleaned_data)
+        if success_message:
+            messages.success(self.request, success_message)
+
+        return response
+    def get_success_message(self, cleaned_data):
+        return self.success_message % cleaned_data
+        #return super().form_valid(form, request)
+
+class PurchasesCreate(SuccessMessageMixin, CreateView):
     model = Purchases
     form_class = PurchasesCreateForm
     success_url = reverse_lazy("purchases")
     template_name = "inventory/add_purchases.html"
 
+    #success_message = None
+
     # this will add the amount_paid to the database automatically
     def form_valid(self, form):
         
-
         menu_item = form.cleaned_data.get('menu_item')
         amount_paid = form.cleaned_data.get('amount_paid')
         menu_item_ID = menu_item.pk
-
-        
+  
         print("QUERY:")
         available_ingredient_qty = 0
         required_ingredient_qty = 0
@@ -107,7 +123,6 @@ class PurchasesCreate(CreateView):
 
         # update the quantity of each ingredient
         for i in RecipeRequirement.objects.filter(menu_item=menu_item.pk):
-            #print( i.ingredient.pk, "-> ", i.ingredient, "-> ", i.quantity )
             required_ingredient_qty = i.quantity
             for k in Ingredient.objects.filter(id=i.ingredient.pk):
                 available_ingredient_qty = k.quantity
@@ -124,17 +139,21 @@ class PurchasesCreate(CreateView):
                 allIngredientsAvailable = False
 
         if( allIngredientsAvailable == True ):
-             for t in tuple_numbers:
+            for t in tuple_numbers:
                 Ingredient.objects.filter(id=t[0]).update(quantity=(t[1]-t[2]))
                 print("DEDUCTING INGREDIENTS")
 
-        print("\n\n\n")
+            print("\n\n\n")
 
-        if menu_item and amount_paid <= 0:
-            form.instance.amount_paid = menu_item.price
+            if menu_item and amount_paid <= 0:
+                form.instance.amount_paid = menu_item.price
 
-        return super().form_valid(form)
-    
+            #success_message = "Purchase Added Successfully!"
+            return super().form_valid(form)
+        else:
+            return HttpResponseRedirect("./create/error")
+            #success_message = "Not enough ingredients!"
+            #return super().form_valid(form)
 
     
 
@@ -151,7 +170,8 @@ class PurchasesDelete(DeleteView):
     success_url = "/inventory/purchases"
     template_name = "inventory/delete_purchases.html"
 
-
+def PurchasesCreateError(request):
+    return render(request, "inventory/add_purchase_error.html")
 
 """class RecipeRequirementList(ListView):
     model = RecipeRequirement
