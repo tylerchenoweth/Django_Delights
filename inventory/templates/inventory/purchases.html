@@ -38,6 +38,12 @@
 </table>
 
 <br>
+{% if messages %}
+    {% for message in messages %}
+        <p> {{ message|safe }} </p>
+    {% endfor %}
+{% endif %}
+<br>
 <a href="{% url 'purchasescreate' %}">ADD</a> 
 
 {% endblock %}
