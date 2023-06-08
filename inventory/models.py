@@ -2,6 +2,8 @@ from django.db import models
 
 import datetime
 
+from django.core.validators import MinValueValidator
+
 # Create your models here.
 class MenuItem(models.Model):
     title = models.CharField(max_length=50, unique=True)
@@ -47,7 +49,13 @@ class Ingredient(models.Model):
 class RecipeRequirement(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
-    quantity = models.FloatField(default=0.0)
+    quantity = models.FloatField(
+        default=0.0, 
+        validators=[MinValueValidator(.1)]
+    )
+
+    class Meta:
+        unique_together = ['menu_item', 'ingredient']
 
     def __str__(self):
         return self.menu_item.title + " - " + self.ingredient.name
