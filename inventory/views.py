@@ -5,7 +5,7 @@ from .models import MenuItem, Ingredient, RecipeRequirement, Purchases
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .forms import MenuItemCreateForm, IngredientCreateForm, PurchasesCreateForm#, RecipeRequirementCreateForm
+from .forms import MenuItemCreateForm, IngredientCreateForm, PurchasesCreateForm, RecipeRequirementCreateForm
 
 from django.urls import reverse_lazy
 
@@ -27,7 +27,7 @@ class MenuItemList(ListView):
 class MenuItemCreate(CreateView):
     model = MenuItem
     form_class = MenuItemCreateForm
-    success_url = reverse_lazy("menu")
+    success_url = reverse_lazy("reciperequirementcreate")
     template_name = "inventory/add_menuitem.html"
 
 class MenuItemUpdate(UpdateView):
@@ -210,3 +210,9 @@ def reciperequirement(request, pk):
         }
 
     return render(request, "inventory/reciperequirement.html", context)
+
+class RecipeRequirementCreate(CreateView):
+    model = RecipeRequirement
+    form_class = RecipeRequirementCreateForm
+    success_url = reverse_lazy("home")
+    template_name = "inventory/add_reciperequirement.html"

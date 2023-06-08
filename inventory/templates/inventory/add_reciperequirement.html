@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} Django Delights {% endblock %}
+
+{% block content %}
+<h1> Recipe Requirement Create</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p}}
+
+    <input type="submit" value="Submit"/>
+</form>
+
+
+{% endblock %}
