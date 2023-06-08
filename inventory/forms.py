@@ -19,10 +19,10 @@ class PurchasesCreateForm(forms.ModelForm):
         #fields = ("name", "quantity", "unit", "unit_price") 
         fields = "__all__"
 
-"""class RecipeRequirementCreateForm(forms.ModelForm):
+class RecipeRequirementCreateForm(forms.ModelForm):
     class Meta:
         model = RecipeRequirement
         #fields = ("name", "quantity", "unit", "unit_price") 
         fields = "__all__"
-"""
+
 
