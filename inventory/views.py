@@ -84,6 +84,7 @@ class PurchasesList(ListView):
     
     
 from django.http import HttpResponseRedirect 
+from django.http import HttpResponse
 
 from django.contrib import messages
 
@@ -211,8 +212,38 @@ def reciperequirement(request, pk):
 
     return render(request, "inventory/reciperequirement.html", context)
 
+
+from django.forms import formset_factory
+
+MyFormSet = formset_factory(RecipeRequirementCreateForm, extra=1)
+
 class RecipeRequirementCreate(CreateView):
     model = RecipeRequirement
     form_class = RecipeRequirementCreateForm
     success_url = reverse_lazy("home")
     template_name = "inventory/add_reciperequirement.html"
+
+    
+    
+    def form_valid(self, form):
+        formset_data = self.request.POST.get('formset')
+
+        
+        print("\n\nFORMSET DATA: ")
+        for f in formset_data:
+            print(f)
+        print("\n\n")
+
+        instances = []
+        for data in formset_data:
+            form = self.form_class(data=data)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                # Additional processing or instance handling if needed
+                instances.append(instance)
+        
+        if instances:
+            print("\n\nSOMETHING HERERERER\n\n")
+            RecipeRequirement.objects.bulk_create(instances)
+        
+        return super().form_valid(form)

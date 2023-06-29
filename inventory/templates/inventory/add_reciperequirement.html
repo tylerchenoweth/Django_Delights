@@ -7,12 +7,42 @@
 {% block content %}
 <h1> Recipe Requirement Create</h1>
 
-<form action="" method="POST">
+
+
+
+<form method="post">
     {% csrf_token %}
-    {{ form.as_p}}
-
-    <input type="submit" value="Submit"/>
-</form>
-
+    
+    
+    
+    <div id="form-container">
+        <div>{{ form.as_p }}</div>
+        <input type="hidden" name="formset" value="">
+        <button type="button" id="add-form-button">Add Form</button>
+        <button type="submit">Submit</button>
+    </div>
+  
+    
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const formContainer = document.getElementById('form-container');
+        const addFormButton = document.getElementById('add-form-button');
+        let formCount = 0;  // Initial form count
+  
+        addFormButton.addEventListener('click', () => {
+          const formHtml = `
+            {{ form.as_p }}
+          `;
+          const formElement = document.createElement('div');
+          formElement.innerHTML = formHtml;
+          formContainer.appendChild(formElement);
+          formCount++;
+        });
+      });
+    </script>
+  
+    
+  </form>
 
 {% endblock %}
