@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import MenuItem, Ingredient, RecipeRequirement, Purchases
 
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 
 from .forms import MenuItemCreateForm, IngredientCreateForm, PurchasesCreateForm, RecipeRequirementCreateForm
 
@@ -213,14 +213,18 @@ def reciperequirement(request, pk):
     return render(request, "inventory/reciperequirement.html", context)
 
 
+
+
+
+
 from django.forms import formset_factory
 
-MyFormSet = formset_factory(RecipeRequirementCreateForm, extra=1)
+MyFormSet = formset_factory(RecipeRequirementCreateForm, extra=5)
 
-class RecipeRequirementCreate(CreateView):
+class RecipeRequirementCreate(FormView):
     model = RecipeRequirement
-    form_class = RecipeRequirementCreateForm
-    success_url = reverse_lazy("home")
+    form_class = MyFormSet
+    success_url = reverse_lazy("menu")
     template_name = "inventory/add_reciperequirement.html"
 
     
