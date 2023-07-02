@@ -219,7 +219,7 @@ def reciperequirement(request, pk):
 
 from django.forms import formset_factory
 
-MyFormSet = formset_factory(RecipeRequirementCreateForm, extra=5)
+MyFormSet = formset_factory(RecipeRequirementCreateForm, extra=3)
 
 class RecipeRequirementCreate(FormView):
     model = RecipeRequirement
@@ -227,14 +227,24 @@ class RecipeRequirementCreate(FormView):
     success_url = reverse_lazy("menu")
     template_name = "inventory/add_reciperequirement.html"
 
-    
-    
     def form_valid(self, form):
         formset_data = self.request.POST.get('formset')
 
-        
-        print("\n\nFORMSET DATA: ")
-        for f in formset_data:
+        print(form.cleaned_data)
+        for f in form.cleaned_data:
+
+            # This will check if the form is blank
+            if( f.keys() ):
+                print("KEYS EXISTS")
+                RecipeRequirement.objects.create(
+                    menu_item = f['menu_item'],
+                    ingredient = f['ingredient'],
+                    quantity = f['quantity']
+                )
+
+
+
+        """for f in formset_data:
             print(f)
         print("\n\n")
 
@@ -250,4 +260,6 @@ class RecipeRequirementCreate(FormView):
             print("\n\nSOMETHING HERERERER\n\n")
             RecipeRequirement.objects.bulk_create(instances)
         
+        """
+
         return super().form_valid(form)
