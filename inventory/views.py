@@ -27,8 +27,11 @@ class MenuItemList(ListView):
 class MenuItemCreate(CreateView):
     model = MenuItem
     form_class = MenuItemCreateForm
-    success_url = reverse_lazy("reciperequirementcreate")
     template_name = "inventory/add_menuitem.html"
+
+    def get_success_url(self):
+        return reverse_lazy('reciperequirementcreate', kwargs={'pk': self.object.pk})
+
 
 class MenuItemUpdate(UpdateView):
     model = MenuItem
@@ -227,14 +230,15 @@ class RecipeRequirementCreate(FormView):
     def form_valid(self, form):
         formset_data = self.request.POST.get('formset')
 
-        print(form.cleaned_data)
+        MenuItemObject = MenuItem.objects.get (pk=self.kwargs['pk'] )
+
         for f in form.cleaned_data:
 
             # This will check if the form is blank
             if( f.keys() ):
-                print("KEYS EXISTS")
+
                 RecipeRequirement.objects.create(
-                    menu_item = f['menu_item'],
+                    menu_item = MenuItemObject,
                     ingredient = f['ingredient'],
                     quantity = f['quantity']
                 )
