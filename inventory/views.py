@@ -38,7 +38,6 @@ class MenuItemUpdate(UpdateView):
 
 class MenuItemDelete(DeleteView):
     model = MenuItem
-    form_class = MenuItemCreateForm
     #success_url = reverse_lazy("inventory")
     success_url = "/inventory/menu"
     template_name = "inventory/delete_menuitem.html"
@@ -64,7 +63,6 @@ class IngredientUpdate(UpdateView):
 
 class IngredientDelete(DeleteView):
     model = Ingredient
-    form_class = IngredientCreateForm
     #success_url = reverse_lazy("inventory")
     success_url = "/inventory/ingredient"
     template_name = "inventory/delete_ingredient.html"
@@ -166,7 +164,6 @@ class PurchasesUpdate(UpdateView):
 
 class PurchasesDelete(DeleteView):
     model = Purchases
-    form_class = PurchasesCreateForm
     #success_url = reverse_lazy("inventory")
     success_url = "/inventory/purchases"
     template_name = "inventory/delete_purchases.html"
