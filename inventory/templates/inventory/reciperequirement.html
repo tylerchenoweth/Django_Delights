@@ -30,7 +30,6 @@
             <td> {{i.pk}} </td>
             <td> {{i.menu_item.pk}} </td>
             <td> {{i.ingredient.pk}} </td>
-
         </tr>
 
     {% endfor %}
@@ -41,6 +40,15 @@
 <p>Menu Item Profit: ${{menu_item_money.menu_item_profit}} </p>
 
 <p> PRimary KEy: {{request.resolver_match.kwargs.pk}}</p>
+
+<h1> 
+    <a href="{% url 'reciperequirementcreate' request.resolver_match.kwargs.pk %}">
+        Add Recipe Requirement for ... {{ ingredients.0.menu_item }}
+    </a> 
+</h1>
+
+
+
 
 
 {% endblock %}
