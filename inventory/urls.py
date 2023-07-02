@@ -27,5 +27,5 @@ urlpatterns = [
     #path("reciperequirement", views.RecipeRequirementList.as_view(), name="reciperequirement"),
     #path("reciperequirement/<int:pk>", views.RecipeRequirementList.as_view(), name="reciperequirement"),
     path("reciperequirement/<int:pk>", views.reciperequirement, name="reciperequirement"),
-    path("reciperequirement/create", views.RecipeRequirementCreate.as_view(), name="reciperequirementcreate"),
+    path("reciperequirement/create/<int:pk>", views.RecipeRequirementCreate.as_view(), name="reciperequirementcreate"),
 ]
