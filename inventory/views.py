@@ -9,6 +9,9 @@ from .forms import MenuItemCreateForm, IngredientCreateForm, PurchasesCreateForm
 
 from django.urls import reverse_lazy
 
+from django.forms import formset_factory
+
+
 
 # Create your views here.
 def home(request):
@@ -203,12 +206,14 @@ def reciperequirement(request, pk):
 
     context = { 
         "ingredients": RecipeRequirement.objects.filter(menu_item=pk),
+        "menu_item_instance": MenuItem.objects.get(pk=pk),
         "menu_item_money": { 
             "menu_item_cost" : menu_item_cost, 
             "menu_item_price" : menu_item_price,
             "menu_item_profit" : menu_item_profit,
             }
         }
+        
 
     return render(request, "inventory/reciperequirement.html", context)
 
@@ -217,9 +222,9 @@ def reciperequirement(request, pk):
 
 
 
-from django.forms import formset_factory
 
-MyFormSet = formset_factory(RecipeRequirementCreateForm, extra=3)
+
+MyFormSet = formset_factory(RecipeRequirementCreateForm, extra=1, max_num=5)
 
 class RecipeRequirementCreate(FormView):
     model = RecipeRequirement

@@ -43,9 +43,10 @@
 
 <h1> 
     <a href="{% url 'reciperequirementcreate' request.resolver_match.kwargs.pk %}">
-        Add Recipe Requirement for ... {{ ingredients.0.menu_item }}
+        Add Recipe Requirement for ... {{ menu_item_instance.title }}
     </a> 
 </h1>
+<h1> {{menu_item.0}} </h1>
 
 
 
