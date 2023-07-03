@@ -19,6 +19,8 @@
         <th> RR - ID </th>
         <th> Menu Item Foreign Key</th>
         <th> Ingredient Foreign Key</th>
+        <th> Update </th>
+        <th> Delete </th>
     </tr>
  
     {% for i in ingredients %}
@@ -30,6 +32,8 @@
             <td> {{i.pk}} </td>
             <td> {{i.menu_item.pk}} </td>
             <td> {{i.ingredient.pk}} </td>
+            <td> <a href="{% url 'reciperequirementupdate' i.id %}">&#128509;</a> </td>
+            <td> <a href="{% url 'reciperequirementdelete' i.pk %}">&#128151</a> </td>
         </tr>
 
     {% endfor %}
