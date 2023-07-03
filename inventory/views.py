@@ -267,3 +267,14 @@ class RecipeRequirementCreate(FormView):
         """
 
         return super().form_valid(form)
+
+class RecipeRequirementUpdate(UpdateView):
+    model = RecipeRequirement
+    form_class = RecipeRequirementCreateForm
+    success_url = reverse_lazy("menu")
+    template_name = "inventory/update_reciperequirement.html" 
+
+class RecipeRequirementDelete(DeleteView):
+    model = RecipeRequirement
+    success_url = reverse_lazy("menu")
+    template_name = "inventory/delete_reciperequirement.html"       
