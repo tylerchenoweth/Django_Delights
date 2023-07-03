@@ -220,22 +220,20 @@ def reciperequirement(request, pk):
 
 
 
-
-
-
-
-MyFormSet = formset_factory(RecipeRequirementCreateForm, extra=1, max_num=5)
+RecipeRequirementFormset = formset_factory(RecipeRequirementCreateForm, extra=3, max_num=5)
 
 class RecipeRequirementCreate(FormView):
     model = RecipeRequirement
-    form_class = MyFormSet
-    success_url = reverse_lazy("menu")
+    form_class = RecipeRequirementFormset
     template_name = "inventory/add_reciperequirement.html"
+
+    def get_success_url(self):
+        return reverse_lazy('reciperequirement', args=[ self.kwargs['pk'] ] )
 
     def form_valid(self, form):
         formset_data = self.request.POST.get('formset')
 
-        MenuItemObject = MenuItem.objects.get (pk=self.kwargs['pk'] )
+        MenuItemObject = MenuItem.objects.get( pk=self.kwargs['pk'] )
 
         for f in form.cleaned_data:
 
