@@ -271,10 +271,20 @@ class RecipeRequirementCreate(FormView):
 class RecipeRequirementUpdate(UpdateView):
     model = RecipeRequirement
     form_class = RecipeRequirementCreateForm
-    success_url = reverse_lazy("menu")
+    #success_url = reverse_lazy("menu")
     template_name = "inventory/update_reciperequirement.html" 
+
+    def get_success_url(self):
+        menu_item_obj = RecipeRequirement.objects.get( id=self.kwargs['pk'] )
+        menu_item_id = menu_item_obj.menu_item_id
+        return reverse_lazy('reciperequirement', args= [ menu_item_id ] )
 
 class RecipeRequirementDelete(DeleteView):
     model = RecipeRequirement
-    success_url = reverse_lazy("menu")
-    template_name = "inventory/delete_reciperequirement.html"       
+    #success_url = reverse_lazy("menu")
+    template_name = "inventory/delete_reciperequirement.html"  
+
+    def get_success_url(self):
+        menu_item_obj = RecipeRequirement.objects.get( id=self.kwargs['pk'] )
+        menu_item_id = menu_item_obj.menu_item_id
+        return reverse_lazy('reciperequirement', args= [ menu_item_id ] )    
