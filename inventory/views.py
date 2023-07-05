@@ -220,10 +220,10 @@ def reciperequirement(request, pk):
 
 
 
-RecipeRequirementFormset = formset_factory(RecipeRequirementCreateForm, extra=3, max_num=5)
+RecipeRequirementFormset = formset_factory(RecipeRequirementCreateForm, extra=5, max_num=5)
 
 class RecipeRequirementCreate(FormView):
-    model = RecipeRequirement
+    model = RecipeRequirementFormset
     form_class = RecipeRequirementFormset
     template_name = "inventory/add_reciperequirement.html"
 
@@ -235,16 +235,20 @@ class RecipeRequirementCreate(FormView):
 
         MenuItemObject = MenuItem.objects.get( pk=self.kwargs['pk'] )
 
+        print( MenuItemObject )
+
         for f in form.cleaned_data:
 
             # This will check if the form is blank
             if( f.keys() ):
-
-                RecipeRequirement.objects.create(
-                    menu_item = MenuItemObject,
-                    ingredient = f['ingredient'],
-                    quantity = f['quantity']
-                )
+                if( RecipeRequirement.objects.filter(menu_item=MenuItemObject, ingredient=f['ingredient']).exists() ):
+                    pass 
+                else:
+                    RecipeRequirement.objects.create(
+                        menu_item = MenuItemObject,
+                        ingredient = f['ingredient'],
+                        quantity = f['quantity']
+                    )
 
 
 
