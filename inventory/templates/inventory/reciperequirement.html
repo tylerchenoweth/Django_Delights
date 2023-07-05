@@ -45,12 +45,13 @@
 
 <p> PRimary KEy: {{request.resolver_match.kwargs.pk}}</p>
 
-<h1> 
-    <a href="{% url 'reciperequirementcreate' request.resolver_match.kwargs.pk %}">
+<br>
+
+<p> 
+    <a class=mybutton href="{% url 'reciperequirementcreate' request.resolver_match.kwargs.pk %}">
         Add Recipe Requirement for ... {{ menu_item_instance.title }}
     </a> 
-</h1>
-<h1> {{menu_item.0}} </h1>
+</p>
 
 
 
