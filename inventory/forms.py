@@ -19,6 +19,4 @@ class PurchasesCreateForm(forms.ModelForm):
 class RecipeRequirementCreateForm(forms.ModelForm):
     class Meta:
         model = RecipeRequirement
-        fields = ("ingredient", "quantity") 
-
-
+        fields = ("ingredient", "quantity")    
