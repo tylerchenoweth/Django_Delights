@@ -1,3 +1,13 @@
+Manage.py commands
+
+docker-compose exec web python manage.py <command>
+    - populatedb
+        - this will populate the database
+    - makemigrations
+    - migrate
+    - createsuperuser
+
+
 Get Docker to run 3.9 in Ubuntu
 1. # Remove the old version (optional, but recommended)
     sudo rm /usr/local/bin/docker-compose
