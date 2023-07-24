@@ -1,0 +1,2 @@
+from inventory.factory import MenuItemFactory 
+x = MenuItemFactory.create_batch(1000)
