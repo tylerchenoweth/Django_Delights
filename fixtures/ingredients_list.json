@@ -1,0 +1,22 @@
+[
+    {
+      "model": "inventory.ingredient",
+      "pk": 1,
+      "fields": {
+        "name": "Milk Chocolate",
+        "quantity": "100",
+        "unit": "OZS",
+        "unit_price": "1.30"
+      }
+    },
+    {
+      "model": "inventory.ingredient",
+      "pk": 2,
+      "fields": {
+        "name": "Orange Jelly",
+        "quantity": "140",
+        "unit": "OZS",
+        "unit_price": ".45"
+      }
+    }
+  ]

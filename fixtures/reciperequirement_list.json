@@ -1,0 +1,11 @@
+[
+    {
+      "model": "inventory.RecipeRequirement",
+      
+      "fields": {
+        "menu_item": 1,
+        "ingredient": 2,
+        "quantity": "4"
+      }
+    }
+]
