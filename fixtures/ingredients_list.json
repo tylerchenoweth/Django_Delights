@@ -6,17 +6,177 @@
         "name": "Milk Chocolate",
         "quantity": "100",
         "unit": "OZS",
-        "unit_price": "1.30"
+        "unit_price": "0.63"
       }
     },
     {
+        "model": "inventory.ingredient",
+        "pk": 2,
+        "fields": {
+          "name": "Flour",
+          "quantity": "100",
+          "unit": "OZS",
+          "unit_price": "0.06"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 3,
+        "fields": {
+          "name": "Cane Sugar",
+          "quantity": "100",
+          "unit": "OZS",
+          "unit_price": "0.08"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 4,
+        "fields": {
+          "name": "Egg",
+          "quantity": "100",
+          "unit": "LRG",
+          "unit_price": "0.50"
+        }
+    },
+    {
       "model": "inventory.ingredient",
-      "pk": 2,
+      "pk": 5,
       "fields": {
         "name": "Orange Jelly",
-        "quantity": "140",
-        "unit": "OZS",
-        "unit_price": ".45"
+        "quantity": "100",
+        "unit": "GRM",
+        "unit_price": "0.03"
       }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 6,
+        "fields": {
+          "name": "Cannoli Shell",
+          "quantity": "100",
+          "unit": "CNS",
+          "unit_price": "1.70"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 7,
+        "fields": {
+          "name": "Ricotta Cheese",
+          "quantity": "100",
+          "unit": "OZS",
+          "unit_price": "0.34"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 8,
+        "fields": {
+          "name": "Confectioners Sugar",
+          "quantity": "100",
+          "unit": "OZS",
+          "unit_price": "0.11"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 9,
+        "fields": {
+          "name": "Mini Chocolate Chips",
+          "quantity": "100",
+          "unit": "OZS",
+          "unit_price": "0.32"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 10,
+        "fields": {
+          "name": "Vanilla Extract",
+          "quantity": "100",
+          "unit": "TSP",
+          "unit_price": "0.84"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 11,
+        "fields": {
+          "name": "Butter",
+          "quantity": "100",
+          "unit": "TBS",
+          "unit_price": "0.38"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 12,
+        "fields": {
+          "name": "Iodized Salt",
+          "quantity": "100",
+          "unit": "TSP",
+          "unit_price": "0.05"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 13,
+        "fields": {
+          "name": "White Sugar",
+          "quantity": "100",
+          "unit": "OZS",
+          "unit_price": "0.38"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 14,
+        "fields": {
+          "name": "Cocoa Powder",
+          "quantity": "100",
+          "unit": "OZS",
+          "unit_price": "0.56"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 15,
+        "fields": {
+          "name": "Baking Powder",
+          "quantity": "100",
+          "unit": "OZS",
+          "unit_price": "0.33"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 16,
+        "fields": {
+          "name": "Chocolate Chips",
+          "quantity": "100",
+          "unit": "OZS",
+          "unit_price": "0.31"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 17,
+        "fields": {
+          "name": "Chocolate Bar",
+          "quantity": "100",
+          "unit": "OZS",
+          "unit_price": "0.91"
+        }
+    },
+    {
+        "model": "inventory.ingredient",
+        "pk": 18,
+        "fields": {
+          "name": "Heavy Cream",
+          "quantity": "100",
+          "unit": "OZS",
+          "unit_price": "0.44"
+        }
     }
   ]
