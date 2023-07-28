@@ -1,2 +1,8 @@
+Enter the python shell:
+
 from inventory.factory import MenuItemFactory 
 x = MenuItemFactory.create_batch(1000)
+
+
+Load Data from JSON
+sudo docker-compose exec web python3 manage.py loaddata <fixtureFileName>
