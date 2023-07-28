@@ -145,8 +145,8 @@
         "fields": {
           "name": "Baking Powder",
           "quantity": "100",
-          "unit": "OZS",
-          "unit_price": "0.33"
+          "unit": "TSP",
+          "unit_price": "0.06"
         }
     },
     {
@@ -178,5 +178,15 @@
           "unit": "OZS",
           "unit_price": "0.44"
         }
-    }
+    },
+    {
+      "model": "inventory.ingredient",
+      "pk": 19,
+      "fields": {
+        "name": "Vanilla Pastry Filling",
+        "quantity": "100",
+        "unit": "OZS",
+        "unit_price": "0.13"
+      }
+  }
   ]
