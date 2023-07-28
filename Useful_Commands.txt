@@ -1,0 +1,14 @@
+How to change docker ownership (run without sudo)
+    sudo chown $USER /var/run/docker.sock
+
+
+How to run factory
+    Enter the python shell:
+
+    from inventory.factory import MenuItemFactory 
+    x = MenuItemFactory.create_batch(1000)
+
+
+Load data with loaddata
+    Load Data from JSON
+    sudo docker-compose exec web python3 manage.py loaddata <fixtureFileName>
