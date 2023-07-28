@@ -24,6 +24,7 @@ class Ingredient(models.Model):
     MEDIUM = "MED"
     LARGE = "LRG"
     POUND = "LBS"
+    CANNOLI_SHELL = "CNS"
 
     UNIT_TYPES = [
         (CUP, "Cup"),
@@ -36,6 +37,7 @@ class Ingredient(models.Model):
         (MEDIUM,"Medium"),
         (SMALL,"Small"),
         (POUND, "LBS"),
+        (CANNOLI_SHELL, "Cannoli Shell"),
     ]
 
     name = models.CharField(max_length=30, unique=True)
