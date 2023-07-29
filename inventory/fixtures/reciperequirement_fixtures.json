@@ -2,89 +2,94 @@
 
   {
     "model": "inventory.RecipeRequirement",
+    "pk": 0,
+    "fields": {
+      "menu_item": 0,
+      "ingredient": 0,
+      "quantity": "6"
+    }
+  },
+  {
+    "model": "inventory.RecipeRequirement",
     "pk": 1,
     "fields": {
-      "menu_item": 1,
+      "menu_item": 0,
       "ingredient": 1,
-      "quantity": "6"
+      "quantity": "1"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 2,
     "fields": {
-      "menu_item": 1,
+      "menu_item": 0,
       "ingredient": 2,
-      "quantity": "1"
+      "quantity": "1.5"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 3,
     "fields": {
-      "menu_item": 1,
+      "menu_item": 0,
       "ingredient": 3,
-      "quantity": "1.5"
+      "quantity": "1"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 4,
     "fields": {
-      "menu_item": 1,
+      "menu_item": 0,
       "ingredient": 4,
-      "quantity": "1"
-    }
-  },
-  {
-    "model": "inventory.RecipeRequirement",
-    "pk": 5,
-    "fields": {
-      "menu_item": 1,
-      "ingredient": 5,
       "quantity": "100"
     }
   },
 
 
 
-
-
-
-
+  {
+    "model": "inventory.RecipeRequirement",
+    "pk": 5,
+    "fields": {
+      "menu_item": 1,
+      "ingredient": 12,
+      "quantity": "16"
+    }
+  },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 6,
     "fields": {
-      "menu_item": 2,
-      "ingredient": 13,
-      "quantity": "16"
+      "menu_item": 1,
+      "ingredient": 1,
+      "quantity": "12"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 7,
     "fields": {
-      "menu_item": 2,
-      "ingredient": 2,
-      "quantity": "12"
+      "menu_item": 1,
+      "ingredient": 10,
+      "quantity": "16"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 8,
     "fields": {
-      "menu_item": 2,
-      "ingredient": 11,
-      "quantity": "16"
+      "menu_item": 1,
+      "ingredient": 3,
+      "quantity": "4"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 9,
     "fields": {
-      "menu_item": 2,
-      "ingredient": 4,
+      "menu_item": 1,
+      "ingredient": 13,
       "quantity": "4"
     }
   },
@@ -92,26 +97,26 @@
     "model": "inventory.RecipeRequirement",
     "pk": 10,
     "fields": {
-      "menu_item": 2,
-      "ingredient": 14,
-      "quantity": "4"
+      "menu_item": 1,
+      "ingredient": 9,
+      "quantity": "1"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 11,
     "fields": {
-      "menu_item": 2,
-      "ingredient": 10,
-      "quantity": "1"
+      "menu_item": 1,
+      "ingredient": 14,
+      "quantity": "0.5"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 12,
     "fields": {
-      "menu_item": 2,
-      "ingredient": 15,
+      "menu_item": 1,
+      "ingredient": 11,
       "quantity": "0.5"
     }
   },
@@ -119,17 +124,8 @@
     "model": "inventory.RecipeRequirement",
     "pk": 13,
     "fields": {
-      "menu_item": 2,
-      "ingredient": 12,
-      "quantity": "0.5"
-    }
-  },
-  {
-    "model": "inventory.RecipeRequirement",
-    "pk": 14,
-    "fields": {
-      "menu_item": 2,
-      "ingredient": 16,
+      "menu_item": 1,
+      "ingredient": 15,
       "quantity": "12"
     }
   },
@@ -138,46 +134,46 @@
 
   {
     "model": "inventory.RecipeRequirement",
+    "pk": 14,
+    "fields": {
+      "menu_item": 2,
+      "ingredient": 5,
+      "quantity": "8"
+    }
+  },
+  {
+    "model": "inventory.RecipeRequirement",
     "pk": 15,
     "fields": {
-      "menu_item": 3,
+      "menu_item": 2,
       "ingredient": 6,
-      "quantity": "8"
+      "quantity": "16"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 16,
     "fields": {
-      "menu_item": 3,
+      "menu_item": 2,
       "ingredient": 7,
-      "quantity": "16"
+      "quantity": "8"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 17,
     "fields": {
-      "menu_item": 3,
+      "menu_item": 2,
       "ingredient": 8,
-      "quantity": "8"
+      "quantity": "6"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 18,
     "fields": {
-      "menu_item": 3,
+      "menu_item": 2,
       "ingredient": 9,
-      "quantity": "6"
-    }
-  },
-  {
-    "model": "inventory.RecipeRequirement",
-    "pk": 19,
-    "fields": {
-      "menu_item": 3,
-      "ingredient": 10,
       "quantity": "1.5"
     }
   },
@@ -186,43 +182,82 @@
 
   {
     "model": "inventory.RecipeRequirement",
+    "pk": 19,
+    "fields": {
+      "menu_item": 3,
+      "ingredient": 10,
+      "quantity": "8"
+    }
+  },
+  {
+    "model": "inventory.RecipeRequirement",
     "pk": 20,
     "fields": {
-      "menu_item": 4,
-      "ingredient": 11,
-      "quantity": "8"
+      "menu_item": 3,
+      "ingredient": 1,
+      "quantity": "12"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 21,
     "fields": {
-      "menu_item": 4,
-      "ingredient": 2,
-      "quantity": "12"
+      "menu_item": 3,
+      "ingredient": 11,
+      "quantity": "0.25"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 22,
     "fields": {
-      "menu_item": 4,
-      "ingredient": 12,
-      "quantity": "0.25"
+      "menu_item": 3,
+      "ingredient": 3,
+      "quantity": "4"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 23,
     "fields": {
-      "menu_item": 4,
-      "ingredient": 4,
-      "quantity": "4"
+      "menu_item": 3,
+      "ingredient": 15,
+      "quantity": "8"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 24,
+    "fields": {
+      "menu_item": 3,
+      "ingredient": 17,
+      "quantity": "8"
+    }
+  },
+  {
+    "model": "inventory.RecipeRequirement",
+    "pk": 25,
+    "fields": {
+      "menu_item": 3,
+      "ingredient": 18,
+      "quantity": "24"
+    }
+  },
+  {
+    "model": "inventory.RecipeRequirement",
+    "pk": 26,
+    "fields": {
+      "menu_item": 3,
+      "ingredient": 9,
+      "quantity": "1"
+    }
+  },
+
+
+
+  {
+    "model": "inventory.RecipeRequirement",
+    "pk": 27,
     "fields": {
       "menu_item": 4,
       "ingredient": 16,
@@ -231,68 +266,28 @@
   },
   {
     "model": "inventory.RecipeRequirement",
-    "pk": 25,
-    "fields": {
-      "menu_item": 4,
-      "ingredient": 18,
-      "quantity": "8"
-    }
-  },
-  {
-    "model": "inventory.RecipeRequirement",
-    "pk": 26,
-    "fields": {
-      "menu_item": 4,
-      "ingredient": 19,
-      "quantity": "24"
-    }
-  },
-  {
-    "model": "inventory.RecipeRequirement",
-    "pk": 27,
-    "fields": {
-      "menu_item": 4,
-      "ingredient": 10,
-      "quantity": "1"
-    }
-  },
-
-
-
-
-  {
-    "model": "inventory.RecipeRequirement",
     "pk": 28,
     "fields": {
-      "menu_item": 5,
+      "menu_item": 4,
       "ingredient": 17,
-      "quantity": "8"
+      "quantity": "6"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 29,
     "fields": {
-      "menu_item": 5,
-      "ingredient": 18,
-      "quantity": "6"
+      "menu_item": 4,
+      "ingredient": 10,
+      "quantity": "1"
     }
   },
   {
     "model": "inventory.RecipeRequirement",
     "pk": 30,
     "fields": {
-      "menu_item": 5,
-      "ingredient": 11,
-      "quantity": "1"
-    }
-  },
-  {
-    "model": "inventory.RecipeRequirement",
-    "pk": 31,
-    "fields": {
-      "menu_item": 5,
-      "ingredient": 10,
+      "menu_item": 4,
+      "ingredient": 9,
       "quantity": "0.5"
     }
   }

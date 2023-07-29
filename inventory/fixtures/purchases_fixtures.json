@@ -1,11 +1,11 @@
 [
-    {
-      "model": "inventory.Purchases",
-      "pk": 1,
-      "fields": {
-        "menu_item": 1,
-        "amount_paid": "8.25",
-        "timestamp": "2023-04-27 22:12"
-      }
+  {
+    "model": "inventory.Purchases",
+    "pk": 1,
+    "fields": {
+      "menu_item": 0,
+      "amount_paid": "8.25",
+      "timestamp": "2023-04-27 22:12"
     }
+  }
 ]

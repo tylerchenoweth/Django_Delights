@@ -30,6 +30,7 @@
         <td>{{ purchase.menu_item }}</td>
         <td>{{ purchase.amount_paid }}</td>
         <td>{{ purchase.timestamp }}</td>
+        <td>{{ purchase.menu_item.pk }}</td>
         <td> <a href="{% url 'purchasesupdate' purchase.id %}">&#128509;</a> </td>
         <td> <a href="{% url 'purchasesdelete' purchase.id %}">&#128151;</a> </td>
 

@@ -1,43 +1,43 @@
 [
-    {
-        "model": "inventory.MenuItem",
-        "pk": 1,
-        "fields": {
-          "title": "Django Djaffa Cake",
-          "price": "8.25"
-        }
-    },
-    {
-      "model": "inventory.MenuItem",
-      "pk": 2,
-      "fields": {
-        "title": "Brandon Brownie",
-        "price": "5.50"
-      }
-    },
-    {
-      "model": "inventory.MenuItem",
-      "pk": 3,
-      "fields": {
-        "title": "Connor Cannoli",
-        "price": "11.50"
+  {
+    "model": "inventory.MenuItem",
+    "pk": 0,
+    "fields": {
+      "title": "Django Djaffa Cake",
+      "price": "8.25"
+    }
+  },
+  {
+    "model": "inventory.MenuItem",
+    "pk": 1,
+    "fields": {
+      "title": "Brandon Brownie",
+      "price": "5.50"
+    }
+  },
+  {
+    "model": "inventory.MenuItem",
+    "pk": 2,
+    "fields": {
+      "title": "Connor Cannoli",
+      "price": "11.50"
 
-      }
-    },
-    {
-        "model": "inventory.MenuItem",
-        "pk": 4,
-        "fields": {
-          "title": "Eric Eclair",
-          "price": "8.25"
-        }
-    },
-    {
-        "model": "inventory.MenuItem",
-        "pk": 5,
-        "fields": {
-          "title": "Tommy Tong sui",
-          "price": "11.47"
-        }
-      }
-  ]
+    }
+  },
+  {
+    "model": "inventory.MenuItem",
+    "pk": 3,
+    "fields": {
+      "title": "Eric Eclair",
+      "price": "8.25"
+    }
+  },
+  {
+    "model": "inventory.MenuItem",
+    "pk": 4,
+    "fields": {
+      "title": "Tommy Truffle",
+      "price": "11.47"
+    }
+  }
+]
