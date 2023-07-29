@@ -5,7 +5,8 @@
 {% block title %} Django Delights {% endblock %}
 
 {% block content %}
-<h1> Recipe Requirement </h1>
+<h1> {{ menu_item_instance.title }} </h1>
+<h2> Recipe Requirement </h2>
 
 
 <!-- if r.menu_item.pk == request.resolver_match.kwargs.pk -->
@@ -52,6 +53,13 @@
         Add Recipe Requirement for ... {{ menu_item_instance.title }}
     </a> 
 </p>
+<p> 
+    <a class=mybutton href="{% url 'menuitemupdate' request.resolver_match.kwargs.pk %}"> Edit </a> 
+</p>
+<p> 
+    <a class=mybutton href="{% url 'menuitemdelete' request.resolver_match.kwargs.pk %}"> Delete </a> 
+</p>
+
 
 
 
