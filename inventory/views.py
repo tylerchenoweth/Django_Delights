@@ -190,6 +190,11 @@ def PurchasesCreateError(request):
         return RecipeRequirement.objects.filter( menu_item=4 )
 """
 
+from math import ceil
+
+def round_up_to_two_decimal_places(num):
+    return ( ceil( num * 100 ) / 100 )
+
 def reciperequirement(request, pk):
 
     menu_item_cost = 0
@@ -202,7 +207,23 @@ def reciperequirement(request, pk):
         menu_item_price = m.price
         break
 
+    menu_item_cost = round_up_to_two_decimal_places( menu_item_cost )
+    menu_item_price = round_up_to_two_decimal_places( menu_item_price )
+
+    menu_item_cost = round( menu_item_cost, 2 )
+    menu_item_price = round( menu_item_price, 2 )
+
+    
+
     menu_item_profit = round( menu_item_price - menu_item_cost, 2 )
+
+    print("\n\n\n\n\n\n\n\n\n\n")
+
+    print( menu_item_cost )
+    print( menu_item_price )
+    print( menu_item_profit )
+
+    print("\n\n\n\n\n\n\n\n\n\n")
 
     context = { 
         "ingredients": RecipeRequirement.objects.filter(menu_item=pk),
