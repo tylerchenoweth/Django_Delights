@@ -168,11 +168,40 @@ class PurchasesUpdate(UpdateView):
     success_url = reverse_lazy("purchases")
     template_name = "inventory/update_purchases.html"    
 
+
+from django.db.models import F 
+
 class PurchasesDelete(DeleteView):
     model = Purchases
-    #success_url = reverse_lazy("inventory")
-    success_url = "/inventory/purchases"
+    success_url = reverse_lazy("purchases")
+    #success_url = "/inventory/purchases"
     template_name = "inventory/delete_purchases.html"
+
+    def form_valid(self, form, *args, **kwargs):
+
+        # Get the purchase to be deleted
+        purchaseToBeDeleted = self.object
+
+        # loop through the ingredients of the Recipe Requirement for the purchase
+        for r in RecipeRequirement.objects.filter(menu_item=purchaseToBeDeleted.menu_item_id):
+            
+            # get the particular ingredient object from that recipe requirement
+            ingredient_object = Ingredient.objects.get( pk=r.ingredient.pk ) 
+
+            # add the recipe requirements back into the inventory
+            Ingredient.objects.filter(
+                pk=r.ingredient.pk
+            ).update(
+                quantity=F('quantity') + r.quantity
+            )
+
+        # Proceed with the deletion
+        success_url = self.get_success_url()
+        self.object.delete()
+
+        # Redirect to the success URL after deletion
+        return HttpResponseRedirect(success_url)
+
 
 def PurchasesCreateError(request):
     return render(request, "inventory/add_purchase_error.html")
