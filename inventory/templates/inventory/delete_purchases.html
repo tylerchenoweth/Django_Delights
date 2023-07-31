@@ -9,6 +9,12 @@
 
 <form action="" method="POST">
     {% csrf_token %}
+
+    <label>
+        <input type="checkbox" name="add_ingredients_back" value="checked">
+        Add ingredients back to the inventory?
+    </label>
+
     <p> Are you sure you want to delete "{{ object }}"? </p>
 
     <input type="submit" value="Confirm"/>
