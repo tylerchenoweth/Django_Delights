@@ -12,19 +12,32 @@
         />
 
         <title>{% block title %} Django Delights {% endblock %}</title>
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
 
         {% block head %} {% endblock %}
     </head>
     <body>
         <h1> Django Delights! </h1>
-
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'menu' %}">Menu</a></li>
-            <li><a href="{% url 'ingredient' %}">Inventory</a></li>
-            <li><a href="{% url 'purchases' %}">Purchases</a></li>
-        </ul>
-
+        <nav class="navbar navbar-expand-sm custom-navbar">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link link-light" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-light" href="{% url 'menu' %}">Menu</a>
+                    </li>
+                    <li class="nav-item -">
+                        <a class="nav-link link-light" href="{% url 'ingredient' %}">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-light" href="{% url 'purchases' %}">Purchases</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         {% block content %}
         {% endblock %}
     </body>
