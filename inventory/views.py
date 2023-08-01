@@ -170,7 +170,6 @@ class PurchasesUpdate(UpdateView):
 
 
 from django.db.models import F 
-from .forms import RadioOptionForm
 
 class PurchasesDelete(DeleteView):
     model = Purchases
