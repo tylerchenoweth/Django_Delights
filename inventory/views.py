@@ -73,8 +73,10 @@ class IngredientDelete(DeleteView):
     success_url = "/inventory/ingredient"
     template_name = "inventory/delete_ingredient.html"
 
-
-
+class IngredientInMenuItems(ListView):
+    model = RecipeRequirement
+    template_name = "inventory/ingredient_in_menuitems.html"
+    context_object_name = 'RR'
 
 #def purchases(request):
 #   return render(request, "inventory/purchases.html")

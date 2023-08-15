@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} Django Delights {% endblock %}
+
+{% block content %}
+<h1 class="text-center text-muted my-4"> Ingredient in Menu Item </h1>
+
+<table class="table table-striped table-active">
+
+<h1> {{ view.kwargs.pk }}</h1>
+<h1> {{ ingredient_instance.name }}</h1>
+
+
+<thead>
+    <th> r.id </th>
+    <th> r.menu_item </th>
+    <th> r.ingredient.id </th>
+    <th> r.ingredient </th>
+    <th> r.quantity </th>
+    <th> request.resolver_match.kwargs.pk </th>
+    <th> Delete </th>
+
+</thead>
+{% for r in RR %}
+<p> {{ RR.kwargs.pk }}</p>
+    {% if r.ingredient.pk == view.kwargs.pk %}
+    <tr>
+        <td>{{ r.id }}</td>
+        <td>{{ r.menu_item }}</td>
+        <td>{{ r.ingredient.id }}</td>
+        <td>{{ r.ingredient }}</td>
+        <td>{{ r.quantity }}</td>
+        <td>{{ view.kwargs.pk }}</td>
+        
+    </tr>
+    {% endif %}
+{% endfor %}
+</table>
+
+<br><br>
+
+<a class="btn shadow-lg" style="background-color: #00e9cc;" href="{% url 'ingredientcreate' %}">
+    ADD Ingredient
+</a>
+<br><br> 
+
+{% endblock %}
