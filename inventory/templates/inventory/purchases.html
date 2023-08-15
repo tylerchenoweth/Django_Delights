@@ -6,33 +6,34 @@
 
 {% block content %}
 
-<h1> Purchases </h1>
+<h1 class="text-center text-muted my-4"> Purchases </h1>
 
-<li>
-{% for purchase in query_purchases %}
-    <ul>
-        {{ purchase.menu_item }}
-    </ul>
-{% endfor %}
-</li>
+<table class=" table table-striped table-active">
 
-<table>
-
-    <tr>
+    <thead>
         <th> Menu Item </th>
         <th> Amount Paid </th>
         <th> Time </th>
+        <th> MenuItemPK</th>
         <th> Edit </th>
         <th> Delete </th>
-    </tr>
+    </thead>
     {% for purchase in purchases_list %}
     <tr>
         <td>{{ purchase.menu_item }}</td>
         <td>{{ purchase.amount_paid }}</td>
         <td>{{ purchase.timestamp }}</td>
         <td>{{ purchase.menu_item.pk }}</td>
-        <td> <a href="{% url 'purchasesupdate' purchase.id %}">&#128509;</a> </td>
-        <td> <a href="{% url 'purchasesdelete' purchase.id %}">&#128151;</a> </td>
+        <td> 
+            <a class="btn btn-warning" href="{% url 'purchasesupdate' purchase.id %}">
+                <img src="/static/wrench.svg">
+            </a> 
+        </td>
+        <td> 
+            <a class="btn btn-danger" href="{% url 'purchasesdelete' purchase.id %}">
+                <img src="/static/x-circle.svg">
+            </a> 
+        </td>
 
     </tr>
     {% endfor %}
@@ -40,7 +41,10 @@
 </table>
 
 <br><br>
-<a class=mybutton href="{% url 'purchasescreate' %}">ADD Purchase</a> <br><br>
+<a class="btn shadow-lg" style="background-color: #00e9cc;" href="{% url 'purchasescreate' %}">
+    ADD Purchase
+</a> 
+<br><br>
 
 
 {% endblock %}

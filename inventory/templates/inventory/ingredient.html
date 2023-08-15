@@ -5,11 +5,11 @@
 {% block title %} Django Delights {% endblock %}
 
 {% block content %}
-<h1> Inventory </h1>
+<h1 class="text-center text-muted my-4"> Inventory </h1>
 
-<table>
+<table class="table table-striped table-active">
 
-<tr>
+<thead>
     <th> ID </th>
     <th> Name </th>
     <th> Quantity </th>
@@ -18,7 +18,7 @@
     <th> Edit </th>
     <th> Delete </th>
 
-</tr>
+</thead>
 {% for ingredient in ingredient_list %}
 <tr>
     <td>{{ ingredient.id }}</td>
@@ -26,14 +26,25 @@
     <td>{{ ingredient.quantity }}</td>
     <td>{{ ingredient.unit }}</td>
     <td>${{ ingredient.unit_price }}</td>
-    <td> <a href="{% url 'ingredientupdate' ingredient.id %}">&#128509;</a> </td>
-    <td> <a href="{% url 'ingredientdelete' ingredient.id %}">&#128151</a> </td>
+    <td> 
+        <a class="btn btn-warning" href="{% url 'ingredientupdate' ingredient.id %}">
+            <img src="/static/wrench.svg">
+        </a> 
+    </td>
+    <td> 
+        <a class="btn btn-danger" href="{% url 'ingredientdelete' ingredient.id %}">
+            <img src="/static/x-circle.svg">
+        </a> 
+    </td>
 </tr>
 {% endfor %}
 </table>
 
 <br><br>
 
-<a class=mybutton href="{% url 'ingredientcreate' %}">ADD Ingredient</a> 
+<a class="btn shadow-lg" style="background-color: #00e9cc;" href="{% url 'ingredientcreate' %}">
+    ADD Ingredient
+</a>
+<br><br> 
 
 {% endblock %}
