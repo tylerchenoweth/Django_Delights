@@ -1,3 +1,17 @@
+How to get Docker to run 3.9 in Ubuntu
+1. # Remove the old version (optional, but recommended)
+    sudo rm /usr/local/bin/docker-compose
+2. # Download the latest version
+    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+3. # Apply executable permissions
+    sudo chmod +x /usr/local/bin/docker-compose
+
+How to Merge a Branch
+1. git checkout main
+2. git pull origin main
+3. git merge test
+4. git push -u origin main
+
 How to change docker ownership (run without sudo)
     sudo chown $USER /var/run/docker.sock
 
