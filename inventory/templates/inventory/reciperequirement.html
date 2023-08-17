@@ -60,7 +60,6 @@
     <a class="btn shadow-lg d-inline-block" style="background-color: #00e9cc;" href="{% url 'reciperequirementcreate' request.resolver_match.kwargs.pk %}">
         Add Recipe Requirement for ... {{ menu_item_instance.title }}
     </a> 
- 
     <a class="btn btn-warning d-inline-block" href="{% url 'menuitemupdate' request.resolver_match.kwargs.pk %}"> Edit </a> 
  
     <a class="btn btn-danger d-inline-block" href="{% url 'menuitemdelete' request.resolver_match.kwargs.pk %}"> Delete </a> 
