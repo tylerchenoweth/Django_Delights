@@ -78,6 +78,14 @@ class IngredientInMenuItems(ListView):
     template_name = "inventory/ingredient_in_menuitems.html"
     context_object_name = 'RR'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        title = Ingredient.objects.get(pk=self.kwargs['pk'])
+        context['title'] = title
+
+        return context
+
 #def purchases(request):
 #   return render(request, "inventory/purchases.html")
 
