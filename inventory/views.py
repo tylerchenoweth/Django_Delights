@@ -82,7 +82,7 @@ class IngredientInMenuItems(ListView):
         context = super().get_context_data(**kwargs)
         
         url_pk = self.kwargs['pk']
-        title = Ingredient.objects.get(url_pk)
+        title = Ingredient.objects.get(pk=url_pk)
 
         context['url_pk'] = url_pk
         context['title'] = title
@@ -237,49 +237,48 @@ from math import ceil
 def round_up_to_two_decimal_places(num):
     return ( ceil( num * 100 ) / 100 )
 
-def reciperequirement(request, pk):
 
-    menu_item_cost = 0
-    menu_item_price = 0
+class RecipeRequirementList(ListView):
+    model = RecipeRequirement
+    template_name = "inventory/reciperequirement.html"
 
-    for r in RecipeRequirement.objects.filter(menu_item=pk):
-        menu_item_cost += ( r.ingredient.unit_price * r.quantity )
-
-    for m in MenuItem.objects.filter(pk=pk):
-        menu_item_price = m.price
-        break
-
-    menu_item_cost = round_up_to_two_decimal_places( menu_item_cost )
-    menu_item_price = round_up_to_two_decimal_places( menu_item_price )
-
-    menu_item_cost = round( menu_item_cost, 2 )
-    menu_item_price = round( menu_item_price, 2 )
-
-    
-
-    menu_item_profit = round( menu_item_price - menu_item_cost, 2 )
-
-    print("\n\n\n\n\n\n\n\n\n\n")
-
-    print( menu_item_cost )
-    print( menu_item_price )
-    print( menu_item_profit )
-
-    print("\n\n\n\n\n\n\n\n\n\n")
-
-    context = { 
-        "ingredients": RecipeRequirement.objects.filter(menu_item=pk),
-        "menu_item_instance": MenuItem.objects.get(pk=pk),
-        "menu_item_money": { 
-            "menu_item_cost" : menu_item_cost, 
-            "menu_item_price" : menu_item_price,
-            "menu_item_profit" : menu_item_profit,
-            }
-        }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         
+        menu_item_cost = 0
+        menu_item_price = 0
 
-    return render(request, "inventory/reciperequirement.html", context)
+        # Get the PK for the current URL
+        url_pk = self.kwargs['pk']
+        title = Ingredient.objects.get(pk=url_pk)
 
+        # Add up the cost of all the ingredients
+        for r in RecipeRequirement.objects.filter(menu_item=url_pk):
+            menu_item_cost += ( r.ingredient.unit_price * r.quantity )
+
+        for m in MenuItem.objects.filter(pk=url_pk):
+            menu_item_price = m.price
+            break
+
+        # Get cost and price of the menu item
+        menu_item_cost = round_up_to_two_decimal_places( menu_item_cost )
+        menu_item_price = round_up_to_two_decimal_places( menu_item_price )
+
+        # round the decimals to the nearest two decimal points
+        #   and calculate the menu item profite
+        menu_item_cost = round( menu_item_cost, 2 )
+        menu_item_price = round( menu_item_price, 2 )
+        menu_item_profit = round( menu_item_price - menu_item_cost, 2 )
+
+        context['url_pk'] = url_pk
+        context['title'] = title        
+        context['ingredients'] = RecipeRequirement.objects.filter(menu_item=url_pk)
+        context['menu_item_instance'] = MenuItem.objects.get(pk=url_pk)
+        context['menu_item_cost'] = menu_item_cost
+        context['menu_item_price'] = menu_item_price
+        context['menu_item_profit'] = menu_item_profit
+
+        return context
 
 
 
