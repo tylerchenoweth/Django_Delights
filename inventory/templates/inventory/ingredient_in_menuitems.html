@@ -29,7 +29,8 @@
     {% if r.ingredient.pk == view.kwargs.pk %}
     <tr class="text-center">
         <td>{{ r.id }}</td>
-        <td>{{ r.menu_item }}</td>
+        <!--<td>{{ r.menu_item }}</td>>-->
+        <td> <a href="{% url 'reciperequirement' r.menu_item.id %}"> {{ r.menu_item.title }} </a> </td>
         <td>{{ r.ingredient.id }}</td>
         <td>{{ r.ingredient }}</td>
         <td>{{ r.quantity }}</td>
