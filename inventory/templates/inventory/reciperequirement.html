@@ -26,7 +26,7 @@
  
     {% for i in ingredients %}
         <tr>
-            <td>{{ i.ingredient }}</td>
+            <td> <a href="{% url 'ingredientinmenuitems' i.id %}"> {{ i.ingredient }} </a> </td>
             <td>{{ i.quantity }}</td>
             <td> {{i.ingredient.unit }}</td>
             <td> {{i.ingredient.unit_price }}</td>
