@@ -81,7 +81,10 @@ class IngredientInMenuItems(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         
-        title = Ingredient.objects.get(pk=self.kwargs['pk'])
+        url_pk = self.kwargs['pk']
+        title = Ingredient.objects.get(url_pk)
+
+        context['url_pk'] = url_pk
         context['title'] = title
 
         return context
