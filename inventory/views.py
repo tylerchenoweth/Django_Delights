@@ -270,6 +270,12 @@ class RecipeRequirementList(ListView):
         menu_item_price = round( menu_item_price, 2 )
         menu_item_profit = round( menu_item_price - menu_item_cost, 2 )
 
+        menu_item_profit_negative = False
+
+        if menu_item_profit < 0:
+            menu_item_profit_negative = True
+            menu_item_profit *= -1
+
         context['url_pk'] = url_pk
         context['title'] = title        
         context['ingredients'] = RecipeRequirement.objects.filter(menu_item=url_pk)
@@ -277,6 +283,8 @@ class RecipeRequirementList(ListView):
         context['menu_item_cost'] = menu_item_cost
         context['menu_item_price'] = menu_item_price
         context['menu_item_profit'] = menu_item_profit
+        context['menu_item_profit_negative'] = menu_item_profit_negative
+        
 
         return context
 

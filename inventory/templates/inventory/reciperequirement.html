@@ -53,8 +53,8 @@
         <ul class="list-group text-end">
             <li class="text-end list-group-item list-group-item-secondary">Menu Item Price: ${{menu_item_price}} </li>
             <li class="text-right list-group-item list-group-item-secondary">Menu Item Cost: ${{menu_item_cost}} </li>
-            {% if menu_item_profit < 0 %}
-                <li class="text-right list-group-item list-group-item-secondary">Menu Item Profit: <span class="text-danger">${{menu_item_profit}}</span> </li>
+            {% if menu_item_profit_negative == True %}
+                <li class="text-right list-group-item list-group-item-secondary">Menu Item Profit: <span class="text-danger">-${{menu_item_profit}}</span> </li>
             {% else %}
                 <li class="text-right list-group-item list-group-item-secondary">Menu Item Profit: ${{menu_item_profit}} </li>
             {% endif %}
