@@ -48,21 +48,28 @@
     {% endfor %}
 </table>
 
-<p>Menu Item Cost: ${{menu_item_cost}} </p>
-<p>Menu Item Price: ${{menu_item_price}} </p>
-<p>Menu Item Profit: ${{menu_item_profit}} </p>
+<div class="row"></div>
+    <div class="col-md-2 text-right">
+        <ul class="list-group text-end">
+            <li class="text-end list-group-item list-group-item-secondary">Menu Item Price: ${{menu_item_price}} </li>
+            <li class="text-right list-group-item list-group-item-secondary">Menu Item Cost: ${{menu_item_cost}} </li>
+            <li class=" text-right list-group-item list-group-item-secondary">Menu Item Profit: ${{menu_item_profit}} </li>
+        </ul>
+    </div>
+</div>
 
-<p> PRimary KEy: {{request.resolver_match.kwargs.pk}}</p>
-
+<!--<p> PRimary KEy: {{request.resolver_match.kwargs.pk}}</p>-->
 <br>
 
  <div class="row">
-    <a class="btn shadow-lg d-inline-block" style="background-color: #00e9cc;" href="{% url 'reciperequirementcreate' request.resolver_match.kwargs.pk %}">
-        Add Recipe Requirement for ... {{ menu_item_instance.title }}
-    </a> 
-    <a class="btn btn-warning d-inline-block" href="{% url 'menuitemupdate' request.resolver_match.kwargs.pk %}"> Edit </a> 
- 
-    <a class="btn btn-danger d-inline-block" href="{% url 'menuitemdelete' request.resolver_match.kwargs.pk %}"> Delete </a> 
+    <div class="btn-group">
+        <a class="btn shadow-lg d-inline-block" style="background-color: #00e9cc;" href="{% url 'reciperequirementcreate' request.resolver_match.kwargs.pk %}">
+            Add Recipe Requirement for ... {{ menu_item_instance.title }}
+        </a> 
+        <a class="btn btn-warning d-inline-block" href="{% url 'menuitemupdate' request.resolver_match.kwargs.pk %}"> Edit </a> 
+    
+        <a class="btn btn-danger d-inline-block" href="{% url 'menuitemdelete' request.resolver_match.kwargs.pk %}"> Delete </a> 
+    </div>
 </div>
 <br><br>
 
