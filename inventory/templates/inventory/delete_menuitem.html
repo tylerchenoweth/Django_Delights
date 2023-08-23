@@ -5,11 +5,11 @@
 {% block title %} Django Delights {% endblock %}
 
 {% block content %}
-<h1> Inventory Create</h1>
+<h1> Delete Menu Item</h1>
 
 <form action="" method="POST">
     {% csrf_token %}
-    <p> Are you sure you want to delete "{{ object }}"? </p>
+    <p> Are you sure you want to <span class="font-weight-bold">delete <strong>{{ object }}</strong>? </p>
 
     <input type="submit" value="Confirm"/>
 </form>
