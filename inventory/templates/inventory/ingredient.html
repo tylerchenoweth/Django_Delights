@@ -8,10 +8,10 @@
 <h1 class="text-center text-muted my-4"> Inventory </h1>
 
 <div class="table-responsive">
-    <div style="overflow: auto; height:300px;">
+    <div class="table-inner-div">
         <table class="table table-striped table-active" >
 
-        <thead class="bg-active" style="position: sticky; top: 0; background-color: #dfe0e1;">
+        <thead class="bg-active">
             <th> ID </th>
             <th> Name </th>
             <th> Quantity </th>
@@ -45,7 +45,7 @@
 
     <br><br>
     
-    <a class="btn shadow-lg" style="background-color: #00e9cc;" href="{% url 'ingredientcreate' %}">
+    <a class="btn shadow-lg  add_btn " href="{% url 'ingredientcreate' %}">
         ADD Ingredient
     </a>
 </div>
