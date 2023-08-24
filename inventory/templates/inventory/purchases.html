@@ -8,42 +8,44 @@
 
 <h1 class="text-center text-muted my-4"> Purchases </h1>
 
-<table class=" table table-striped table-active">
+<div class="table-responsive">
+    <div class="table-inner-div">
+        <table class=" table table-striped table-active">
+            <thead>
+                <th> Menu Item </th>
+                <th> Amount Paid </th>
+                <th> Time </th>
+                <th> MenuItemPK</th>
+                <th> Edit </th>
+                <th> Delete </th>
+            </thead>
+            {% for purchase in purchases_list %}
+            <tr>
+                <td> <a href="{% url 'reciperequirement' purchase.menu_item.id %}"> {{ purchase.menu_item }} </a> </td>
+                <td>{{ purchase.amount_paid }}</td>
+                <td>{{ purchase.timestamp }}</td>
+                <td>{{ purchase.menu_item.pk }}</td>
+                <td> 
+                    <a class="btn btn-warning" href="{% url 'purchasesupdate' purchase.id %}">
+                        <img src="/static/wrench.svg">
+                    </a> 
+                </td>
+                <td> 
+                    <a class="btn btn-danger" href="{% url 'purchasesdelete' purchase.id %}">
+                        <img src="/static/x-circle.svg">
+                    </a> 
+                </td>
+            </tr>
+            {% endfor %}     
+        </table>
+    </div>
 
-    <thead>
-        <th> Menu Item </th>
-        <th> Amount Paid </th>
-        <th> Time </th>
-        <th> MenuItemPK</th>
-        <th> Edit </th>
-        <th> Delete </th>
-    </thead>
-    {% for purchase in purchases_list %}
-    <tr>
-        <td> <a href="{% url 'reciperequirement' purchase.menu_item.id %}"> {{ purchase.menu_item }} </a> </td>
-        <td>{{ purchase.amount_paid }}</td>
-        <td>{{ purchase.timestamp }}</td>
-        <td>{{ purchase.menu_item.pk }}</td>
-        <td> 
-            <a class="btn btn-warning" href="{% url 'purchasesupdate' purchase.id %}">
-                <img src="/static/wrench.svg">
-            </a> 
-        </td>
-        <td> 
-            <a class="btn btn-danger" href="{% url 'purchasesdelete' purchase.id %}">
-                <img src="/static/x-circle.svg">
-            </a> 
-        </td>
-
-    </tr>
-    {% endfor %}
+    <br><br>
     
-</table>
-
-<br><br>
-<a class="btn shadow-lg" style="background-color: #00e9cc;" href="{% url 'purchasescreate' %}">
-    ADD Purchase
-</a> 
+    <a class="btn shadow-lg" style="background-color: #00e9cc;" href="{% url 'purchasescreate' %}">
+        ADD Purchase
+    </a> 
+</div>
 <br><br>
 
 

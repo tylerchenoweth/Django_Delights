@@ -11,78 +11,80 @@
 
 <!-- if r.menu_item.pk == request.resolver_match.kwargs.pk -->
 
-<table class="table table-striped table-active">
-    <tr>
-        <th> PK </th>
-        <th> Ingredient </th>
-        <th> Quantity</th>
-        <th> Unit Type </th>
-        <th> Unit Price </th>
-        <th> RR - ID </th>
-        <th> Menu Item Foreign Key</th>
-        <th> Ingredient Foreign Key</th>
-        <th> Update </th>
-        <th> Delete </th>
-    </tr>
- 
-    {% for i in ingredients %}
-        <tr>
-            <td> <a href="{% url 'ingredientinmenuitems' i.ingredient.pk %}"> {{ i.ingredient.pk }} </a> </td>
-            <td> <a href="{% url 'ingredientinmenuitems' i.ingredient.pk %}"> {{ i.ingredient }} </a> </td>
-            <td>{{ i.quantity }}</td>
-            <td> {{i.ingredient.unit }}</td>
-            <td> {{i.ingredient.unit_price }}</td>
-            <td> {{i.pk}} </td>
-            <td> {{i.menu_item.pk}} </td>
-            <td> {{i.ingredient.pk}} </td>
-            <td> 
-                <a class="btn btn-warning" href="{% url 'reciperequirementupdate' i.pk %}">
-                    <img src="/static/wrench.svg">
-                </a> 
-            </td>
-            <td> 
-                <a class="btn btn-danger" href="{% url 'reciperequirementdelete' i.pk %}">
-                    <img src="/static/x-circle.svg">
-                </a> 
-            </td>
-        </tr>
-
-    {% endfor %}
-</table>
-
-<div class="row"></div>
-    <div class="col-md-2 text-right">
-        <ul class="list-group text-end">
-            <li class="text-end list-group-item list-group-item-secondary">Menu Item Price: ${{menu_item_price}} </li>
-            <li class="text-right list-group-item list-group-item-secondary">Menu Item Cost: ${{menu_item_cost}} </li>
-            {% if menu_item_profit_negative == True %}
-                <li class="text-right list-group-item list-group-item-secondary">Menu Item Profit: <span class="text-danger">-${{menu_item_profit}}</span> </li>
-            {% else %}
-                <li class="text-right list-group-item list-group-item-secondary">Menu Item Profit: ${{menu_item_profit}} </li>
-            {% endif %}
-            
-        </ul>
+<div class="table-responsive">
+    <div class="table-inner-div">
+        <table class="table table-striped table-active">
+            <thead>
+                <th> PK </th>
+                <th> Ingredient </th>
+                <th> Quantity</th>
+                <th> Unit Type </th>
+                <th> Unit Price </th>
+                <th> RR - ID </th>
+                <th> Menu Item Foreign Key</th>
+                <th> Ingredient Foreign Key</th>
+                <th> Update </th>
+                <th> Delete </th>
+            </thead>
+        
+            {% for i in ingredients %}
+            <tr>
+                <td> <a href="{% url 'ingredientinmenuitems' i.ingredient.pk %}"> {{ i.ingredient.pk }} </a> </td>
+                <td> <a href="{% url 'ingredientinmenuitems' i.ingredient.pk %}"> {{ i.ingredient }} </a> </td>
+                <td>{{ i.quantity }}</td>
+                <td> {{i.ingredient.unit }}</td>
+                <td> {{i.ingredient.unit_price }}</td>
+                <td> {{i.pk}} </td>
+                <td> {{i.menu_item.pk}} </td>
+                <td> {{i.ingredient.pk}} </td>
+                <td> 
+                    <a class="btn btn-warning" href="{% url 'reciperequirementupdate' i.pk %}">
+                        <img src="/static/wrench.svg">
+                    </a> 
+                </td>
+                <td> 
+                    <a class="btn btn-danger" href="{% url 'reciperequirementdelete' i.pk %}">
+                        <img src="/static/x-circle.svg">
+                    </a> 
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-2 text-right">
+            <ul class="list-group text-end">
+                <li class="text-end list-group-item list-group-item-secondary">Menu Item Price: ${{menu_item_price}} </li>
+                <li class="text-right list-group-item list-group-item-secondary">Menu Item Cost: ${{menu_item_cost}} </li>
+                {% if menu_item_profit_negative == True %}
+                    <li class="text-right list-group-item list-group-item-secondary">Menu Item Profit: <span class="text-danger">-${{menu_item_profit}}</span> </li>
+                {% else %}
+                    <li class="text-right list-group-item list-group-item-secondary">Menu Item Profit: ${{menu_item_profit}} </li>
+                {% endif %}
+                
+            </ul>
+        </div>
+    </div>
+
+    <!--<p> PRimary KEy: {{request.resolver_match.kwargs.pk}}</p>-->
+    <br>
+
+    <div class="row">
+        <div class="btn-group">
+            <a class="btn shadow-lg d-inline-block" style="background-color: #00e9cc;" href="{% url 'reciperequirementcreate' url_pk %}">
+                Add Recipe Requirement for ... {{ menu_item_instance.title }}
+            </a> 
+            <a class="btn btn-warning d-inline-block" href="{% url 'menuitemupdate' url_pk %}"> Edit </a> 
+        
+            <a class="btn btn-danger d-inline-block" href="{% url 'menuitemdelete' url_pk %}"> Delete </a> 
+        </div>
+    </div>
+
 </div>
 
-<!--<p> PRimary KEy: {{request.resolver_match.kwargs.pk}}</p>-->
-<br>
-
- <div class="row">
-    <div class="btn-group">
-        <a class="btn shadow-lg d-inline-block" style="background-color: #00e9cc;" href="{% url 'reciperequirementcreate' url_pk %}">
-            Add Recipe Requirement for ... {{ menu_item_instance.title }}
-        </a> 
-        <a class="btn btn-warning d-inline-block" href="{% url 'menuitemupdate' url_pk %}"> Edit </a> 
-    
-        <a class="btn btn-danger d-inline-block" href="{% url 'menuitemdelete' url_pk %}"> Delete </a> 
-    </div>
-</div>
 <br><br>
-
-
-
-
-
 
 {% endblock %}

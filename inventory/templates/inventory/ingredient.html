@@ -10,36 +10,34 @@
 <div class="table-responsive">
     <div class="table-inner-div">
         <table class="table table-striped table-active" >
-
-        <thead class="bg-active">
-            <th> ID </th>
-            <th> Name </th>
-            <th> Quantity </th>
-            <th> Unit </th>
-            <th> Unit Price </th>
-            <th> Edit </th>
-            <th> Delete </th>
-
-        </thead>
-        {% for ingredient in ingredient_list %}
-        <tr>
-            <td>{{ ingredient.id }}</td>
-            <td> <a href="{% url 'ingredientinmenuitems' ingredient.id %}"> {{ ingredient.name }} </a> </td>
-            <td>{{ ingredient.quantity }}</td>
-            <td>{{ ingredient.unit }}</td>
-            <td>${{ ingredient.unit_price }}</td>
-            <td> 
-                <a class="btn btn-warning" href="{% url 'ingredientupdate' ingredient.id %}">
-                    <img src="/static/wrench.svg">
-                </a> 
-            </td>
-            <td> 
-                <a class="btn btn-danger" href="{% url 'ingredientdelete' ingredient.id %}">
-                    <img src="/static/x-circle.svg">
-                </a> 
-            </td>
-        </tr>
-        {% endfor %}
+            <thead class="bg-active">
+                <th> ID </th>
+                <th> Name </th>
+                <th> Quantity </th>
+                <th> Unit </th>
+                <th> Unit Price </th>
+                <th> Edit </th>
+                <th> Delete </th>
+            </thead>
+            {% for ingredient in ingredient_list %}
+            <tr>
+                <td>{{ ingredient.id }}</td>
+                <td> <a href="{% url 'ingredientinmenuitems' ingredient.id %}"> {{ ingredient.name }} </a> </td>
+                <td>{{ ingredient.quantity }}</td>
+                <td>{{ ingredient.unit }}</td>
+                <td>${{ ingredient.unit_price }}</td>
+                <td> 
+                    <a class="btn btn-warning" href="{% url 'ingredientupdate' ingredient.id %}">
+                        <img src="/static/wrench.svg">
+                    </a> 
+                </td>
+                <td> 
+                    <a class="btn btn-danger" href="{% url 'ingredientdelete' ingredient.id %}">
+                        <img src="/static/x-circle.svg">
+                    </a> 
+                </td>
+            </tr>
+            {% endfor %}
         </table>
     </div>
 

@@ -7,39 +7,41 @@
 {% block content %}
 <h1 class="text-center text-muted my-4"> Menu </h1>
 
-<table class="table table-striped table-active">
+<div class="table-responsive">
+    <div class="table-inner-div">
+        <table class="table table-striped table-active" >
+            <thead>
+                <th> PK </th>
+                <th> Title </th>
+                <th> Price </th>
+                <th> Edit </th>
+                <th> Delete </th>
+            </thead>
+            {% for menuitem in menuitem_list %}
+            <tr>
+                <td> {{ menuitem.id }}</td>
+                <td> <a class="link-underline link-underline-opacity-0" href="{% url 'reciperequirement' menuitem.id %}"> {{ menuitem.title }} </a> </td>
+                <td>{{ menuitem.price }}</td>
+                <td> 
+                    <a class="btn btn-warning" href="{% url 'menuitemupdate' menuitem.id %}">
+                        <img src="/static/wrench.svg">
+                    </a> 
+                </td>
+                <td> 
+                    <a class="btn btn-danger" href="{% url 'menuitemdelete' menuitem.id %}">
+                        <img src="/static/x-circle.svg">
+                    </a> 
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
-<thead>
-    <th> PK </th>
-    <th> Title </th>
-    <th> Price </th>
-    <th> Edit </th>
-    <th> Delete </th>
-</thead>
-{% for menuitem in menuitem_list %}
-<tr>
-    <td> {{ menuitem.id }}</td>
-    <td> <a href="{% url 'reciperequirement' menuitem.id %}"> {{ menuitem.title }} </a> </td>
-    <td>{{ menuitem.price }}</td>
-    <td> 
-        <a class="btn btn-warning" href="{% url 'menuitemupdate' menuitem.id %}">
-            <img src="/static/wrench.svg">
-        </a> 
-    </td>
-    <td> 
-        <a class="btn btn-danger" href="{% url 'menuitemdelete' menuitem.id %}">
-            <img src="/static/x-circle.svg">
-        </a> 
-    </td>
-    
-</tr>
-{% endfor %}
-</table>
-
-<br><br>
-<a class="btn shadow-lg" style="background-color: #00e9cc;" href="{% url 'menuitemcreate' %}">
-    ADD Menu Item
-</a> 
+    <br><br>
+    <a class="btn shadow-lg" style="background-color: #00e9cc;" href="{% url 'menuitemcreate' %}">
+        ADD Menu Item
+    </a> 
+</div>
 <br><br>
 
 
