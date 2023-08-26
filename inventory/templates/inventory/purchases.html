@@ -22,7 +22,7 @@
             {% for purchase in purchases_list %}
             <tr>
                 <td> <a href="{% url 'reciperequirement' purchase.menu_item.id %}"> {{ purchase.menu_item }} </a> </td>
-                <td>{{ purchase.amount_paid }}</td>
+                <td>${{ purchase.amount_paid }}</td>
                 <td>{{ purchase.timestamp }}</td>
                 <td>{{ purchase.menu_item.pk }}</td>
                 <td> 
