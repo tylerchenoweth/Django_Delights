@@ -35,12 +35,12 @@
         <td>{{ r.ingredient }}</td>
         <td>{{ r.quantity }}</td>
         <td> 
-            <a class="btn btn-warning" href="{% url 'ingredientupdate' r.pk %}">
+            <a class="btn btn-warning" href="{% url 'menuitemupdate' r.menu_item.pk %}">
                 <img src="/static/wrench.svg">
             </a> 
         </td>
         <td> 
-            <a class="btn btn-danger" href="{% url 'ingredientdelete' r.pk %}">
+            <a class="btn btn-danger" href="{% url 'menuitemdelete' r.menu_item.pk %}">
                 <img src="/static/x-circle.svg">
             </a> 
         </td>
