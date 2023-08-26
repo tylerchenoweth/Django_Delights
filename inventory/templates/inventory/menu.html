@@ -21,7 +21,7 @@
             <tr>
                 <td> {{ menuitem.id }}</td>
                 <td> <a class="link-underline link-underline-opacity-0" href="{% url 'reciperequirement' menuitem.id %}"> {{ menuitem.title }} </a> </td>
-                <td>${{ menuitem.price }}</td>
+                <td>${{ menuitem.price | floatformat:2 }}</td>
                 <td> 
                     <a class="btn btn-warning" href="{% url 'menuitemupdate' menuitem.id %}">
                         <img src="/static/wrench.svg">

@@ -25,7 +25,7 @@
                 <td> <a href="{% url 'ingredientinmenuitems' ingredient.id %}"> {{ ingredient.name }} </a> </td>
                 <td>{{ ingredient.quantity }}</td>
                 <td>{{ ingredient.unit }}</td>
-                <td>${{ ingredient.unit_price }}</td>
+                <td>${{ ingredient.unit_price | floatformat:2 }}</td>
                 <td> 
                     <a class="btn btn-warning" href="{% url 'ingredientupdate' ingredient.id %}">
                         <img src="/static/wrench.svg">

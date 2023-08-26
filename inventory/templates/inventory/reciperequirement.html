@@ -31,9 +31,9 @@
             <tr>
                 <td> <a href="{% url 'ingredientinmenuitems' i.ingredient.pk %}"> {{ i.ingredient.pk }} </a> </td>
                 <td> <a href="{% url 'ingredientinmenuitems' i.ingredient.pk %}"> {{ i.ingredient }} </a> </td>
-                <td>{{ i.quantity }}</td>
+                <td> {{ i.quantity }}</td>
                 <td> {{i.ingredient.unit }}</td>
-                <td> ${{i.ingredient.unit_price }}</td>
+                <td> ${{i.ingredient.unit_price | floatformat:2 }}</td>
                 <td> {{i.pk}} </td>
                 <td> {{i.menu_item.pk}} </td>
                 <td> {{i.ingredient.pk}} </td>
