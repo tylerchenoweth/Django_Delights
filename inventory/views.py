@@ -250,7 +250,9 @@ class RecipeRequirementList(ListView):
 
         # Get the PK for the current URL
         url_pk = self.kwargs['pk']
-        title = Ingredient.objects.get(pk=url_pk)
+
+        # Get the name of the menu item
+        title = MenuItem.objects.get(pk=url_pk)
 
         # Add up the cost of all the ingredients
         for r in RecipeRequirement.objects.filter(menu_item=url_pk):
