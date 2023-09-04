@@ -47,7 +47,8 @@
                 <a href="{% url 'home' %}"> 
                     <img src="/static/clemenza_notsq.jpg"> 
                 </a>
-            </nav>  
+            </nav>
+            {% if user.is_authenticated %}
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
@@ -64,8 +65,11 @@
                     </li>
                 </ul>
             </div>
+            <p><a href="{% url 'logout' %}">Logout</a></p>
+            {% endif %}
         </nav>
 
+        {% if user.is_authenticated %}
         <!-- Jumbotron -->
         <div class="jumbotron-fluid border" 
             style="background-image: url('/static/pie-slice.jpg'); 
@@ -83,6 +87,7 @@
                 <p class="font-weight-bold text-uppercase"> To meet all your desert needs! </p>
             </div>
         </div>
+        {% endif %}
         
         <!-- Animation -->
         <!--
@@ -98,11 +103,20 @@
 
         
 
-        <!-- Webpage Content -->
-        <div class="container-fluid">
-        {% block content %}
-        {% endblock %}
-        </div>
+
+        {% if user.is_authenticated %}
+            <!-- Webpage Content -->
+            <div class="container-fluid">
+                Hi {{ user.username }}
+                <p><a href="{% url 'logout' %}">Logout</a></p>
+            {% block content %}
+            {% endblock %}
+            </div>
+        {% else %}
+            <p> You are not logged in </p>
+            <p><a href="{% url 'login' %}">Login</a></p>
+        {% endif %}
+
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -122,6 +122,10 @@ USE_TZ = True
 # This will silence the warnings of pk types
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
+
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
