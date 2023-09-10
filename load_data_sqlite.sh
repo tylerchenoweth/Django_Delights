@@ -1,0 +1,4 @@
+python3 manage.py loaddata menuitem_fixtures
+python3 manage.py loaddata ingredient_fixtures
+python3 manage.py loaddata reciperequirement_fixtures
+python3 manage.py loaddata purchases_fixtures

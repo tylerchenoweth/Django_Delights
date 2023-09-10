@@ -1,0 +1,17 @@
+
+/* for the tables */
+.table-inner-div {
+    overflow: auto; 
+    height:300px;
+}
+
+thead {
+    position: sticky; 
+    top: 0; 
+    background-color: #dfe0e1;
+}
+
+/* Changes the background color of the 'Add' buttons */
+.btn.add_btn {
+    background-color: #00e9cc;
+}

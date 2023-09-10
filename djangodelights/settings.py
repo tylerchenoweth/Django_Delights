@@ -26,6 +26,7 @@ SECRET_KEY = '=lo@7%its*sd&t46(_71)9i@q!@_2s5@er#n1a#9_8szkjt366'
 DEBUG = False
 
 ALLOWED_HOSTS = [
+	'tchenoweth1.pythonanywhere.com',
     '127.0.0.1',
     'localhost',
 ]
