@@ -12,20 +12,39 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+import json
+from django.core.exceptions import ImproperlyConfigured
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+KEYSDIR = str(BASE_DIR)+"/keys.json"
+
+with open(KEYSDIR) as k:
+    project_keys = json.loads(k.read())
+
+def getKey(setting,project_keys=project_keys):
+    try:
+        return project_keys[setting]
+    except KeyError:
+        errorMessage = "Set the {} env var".format(setting)
+        raise ImproperlyConfigured(errorMessage)
+
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=lo@7%its*sd&t46(_71)9i@q!@_2s5@er#n1a#9_8szkjt366'
+SECRET_KEY = getKey("SECRETKEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
+	'tchenoweth1.pythonanywhere.com',
     '127.0.0.1',
     'localhost',
 ]
@@ -81,13 +100,9 @@ WSGI_APPLICATION = 'djangodelights.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "db",  # set in docker-compose.yml
-        "PORT": 5432,  # default postgres port
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 
@@ -140,6 +155,6 @@ STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Must add this for CSS
-STATICFILES_DIRS = ( 
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static/"),
 )
