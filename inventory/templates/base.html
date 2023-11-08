@@ -107,8 +107,7 @@
         {% if user.is_authenticated %}
             <!-- Webpage Content -->
             <div class="container-fluid">
-                Hi {{ user.username }}
-                <p><a href="{% url 'logout' %}">Logout</a></p>
+                Hi, {{ user.username }}
             {% block content %}
             {% endblock %}
             </div>
